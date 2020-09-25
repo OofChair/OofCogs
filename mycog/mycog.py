@@ -7,4 +7,54 @@ class Mycog(commands.Cog):
     async def test(self, ctx):
         """This does stuff!"""
         # Your code will go here
-        await ctx.send("Ping! Test worked fine :D")
+        await ctx.send("bigger wiggle
+ bigger wiggle
+  bigger wiggle
+   bigger wiggle
+     bigger wiggle
+       bigger wiggle
+         bigger wiggle
+            bigger wiggle
+               bigger wiggle
+                  bigger wiggle
+                     bigger wiggle
+                        bigger wiggle
+                           bigger wiggle
+                              bigger wiggle
+                                 bigger wiggle
+                                    bigger wiggle
+                                       bigger wiggle
+                                         bigger wiggle
+                                           bigger wiggle
+                                             bigger wiggle
+                                              bigger wiggle
+                                               bigger wiggle
+                                                bigger wiggle
+                                                bigger wiggle
+                                                bigger wiggle
+                                                bigger wiggle
+                                               bigger wiggle
+                                              bigger wiggle
+                                             bigger wiggle
+                                           bigger wiggle
+                                         bigger wiggle
+                                       bigger wiggle
+                                    bigger wiggle
+                                 bigger wiggle
+                              bigger wiggle
+                           bigger wiggle
+                        bigger wiggle
+                     bigger wiggle
+                  bigger wiggle
+               bigger wiggle
+            bigger wiggle
+         bigger wiggle
+       bigger wiggle
+     bigger wiggle
+   bigger wiggle
+  bigger wiggle
+ bigger wiggle
+bigger wiggle
+bigger wiggle
+bigger wiggle
+bigger wiggle")
