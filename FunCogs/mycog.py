@@ -5,6 +5,6 @@ class ClydeFun(commands.Cog):
 
     @commands.command()
     async def rickroll(self, ctx):
-        """This does stuff!"""
+        """Rickroll your friends!"""
         # Your code will go here
         await ctx.send("https://giphy.com/gifs/rick-astley-Ju7l5y9osyymQ")
