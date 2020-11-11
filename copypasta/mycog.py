@@ -7,8 +7,9 @@ class Copypasta(commands.Cog):
     async def behappy(self, ctx):
         """Test command"""
         # Your code will go here
-        embed=discord.Embed(title="Hi! I'm Oofchair - Experimental Edition :D", description="undefined?", color=0xff0000)
-        embed.set_thumbnail(url="https://s.yimg.com/ny/api/res/1.2/12UU2JphAsbxTTDca.7QFQ--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9MTA4MDtoPTcxNg--/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2019-11/7b5b5330-112b-11ea-a77f-7c019be7ecae")
-        embed.add_field(name="ohhhh shoot", value="that's why it didnt work :facepalm:", inline=False)
-        embed.set_footer(text="OofChair - Experimental Edition")
+        embed=discord.Embed(title="Be Happy by Dixie D'amelio", color=0xff0000)
+        embed.set_thumbnail(url="https://upload.wikimedia.org/wikipedia/en/thumb/e/e7/Dixie_D%27Amelio_-_Be_Happy.png/220px-Dixie_D%27Amelio_-_Be_Happy.png")
+        embed.add_field(name="ᗷᕼᑌᗴᔕᒍYᗴᔕ", value="ᗷᕼᑌᗴᔕᒍYᗴᔕ 🤷sometimes✨i🙁don't😢wanna😱be😼happy🧚don't✋hold😇it🤪against😈me🙆", inline=False)
+        embed.add_field(name="Link:", value="[Be Happy Music Video](https://www.youtube.com/watch?v=wKOptbo-QFw)")
+        embed.set_footer(text="(c) DAM FAM Records")
         await ctx.send(embed=embed)
