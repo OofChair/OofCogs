@@ -1,5 +1,5 @@
-from .mycog import OEE_variable
+from .mycog import OEEvariable
 
 
 def setup(bot):
-  bot.add_cog(OEEVariable())
+  bot.add_cog(OEEvariable())

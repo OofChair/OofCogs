@@ -1,6 +1,6 @@
 from redbot.core import commands
 
-class OEE_variable(commands.Cog):
+class OEEvariable(commands.Cog):
     """Random fun commands"""
 
     @commands.command()
