@@ -1,5 +1,5 @@
 from redbot.core import commands
-
+import discord
 class Copypasta(commands.Cog):
     """Random fun commands"""
 
