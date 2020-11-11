@@ -8,3 +8,4 @@ class Copypasta(commands.Cog):
         """Rickroll your friends!"""
         # Your code will go here
 embed = discord.Embed(description="Descript? I hope so :D" )
+await ctx.send(embed=embed)
