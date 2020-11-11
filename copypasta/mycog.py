@@ -7,4 +7,4 @@ class Copypasta(commands.Cog):
     async def behappy(self, ctx):
         """Rickroll your friends!"""
         # Your code will go here
-        await ctx.send("behappy")
+embed = discord.Embed(description="Descript? I hope so :D" )
