@@ -1,5 +1,5 @@
-from .mycog import ClydeFun
+from .mycog import Copypasta
 
 
 def setup(bot):
-  bot.add_cog(ClydeFun())
+  bot.add_cog(Copypasta())
