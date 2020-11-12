@@ -1,0 +1,10 @@
+{
+    "author" : ["OofChair#0001",
+    "install_msg" : "Thank you for installing the copypasta cog from OofCogs :D",
+    "name" : "copypasta",
+    "short" : "A cog with many copypastas.",
+    "requirements" : ["Example library", "Example 2", "Example 3"],
+    "description" : "This cog can do many copypastas, just do `[p]help Copypasta` to show all.",
+    "permissions" : ["List of Bot permissions required"],
+    "tags" : ["fun, meme"]
+}
