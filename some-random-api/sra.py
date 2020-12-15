@@ -1,5 +1,6 @@
 import aiohttp
 from redbot.core import commands
+from redbot.core import commands.group
 
 
 class SRA(commands.Cog):
@@ -7,7 +8,7 @@ class SRA(commands.Cog):
 
     @commands.command()
     async def dogfact(self, ctx):
-        """This does stuff!"""
+        """Gets random dog fact"""
         # Your code will go here
         async def something():
             async with aiohttp.ClientSession() as session:
