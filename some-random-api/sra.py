@@ -6,7 +6,7 @@ class Mycog(commands.Cog):
     """My custom cog"""
 
     @commands.command()
-    async def test(self, ctx):
+    async def dogfact(self, ctx):
         """This does stuff!"""
         # Your code will go here
         async def something():
