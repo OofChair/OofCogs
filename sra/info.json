@@ -1,7 +1,7 @@
 {
     "author" : ["OofChair#0001",
     "install_msg" : "Thank you for installing the Some Random API cog from OofCogs :D",
-    "name" : "sra",
+    "name" : "SRA",
     "short" : "A cog that gets random things from Some Random API.",
     "requirements" : ["aiohttp", "Example 2", "Example 3"],
     "description" : "This cog can get many different things from Some Random API. ",
