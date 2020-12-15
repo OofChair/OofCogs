@@ -1,4 +1,4 @@
-from .SRA import SRA
+from .sra import sra
 
 
 def setup(bot):

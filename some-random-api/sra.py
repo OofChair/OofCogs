@@ -3,7 +3,7 @@ from redbot.core import commands
 from redbot.core import commands.group
 
 
-class SRA(commands.Cog):
+class sra(commands.Cog):
     """API requests from Some Random API"""
 
     @commands.command()
