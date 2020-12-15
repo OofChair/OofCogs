@@ -3,7 +3,7 @@ from redbot.core import commands
 
 
 class SRA(commands.Cog):
-    """My custom cog"""
+    """API requests from Some Random API"""
 
     @commands.command()
     async def dogfact(self, ctx):
