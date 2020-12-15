@@ -1,6 +1,5 @@
 import aiohttp
 from redbot.core import commands
-from redbot.core import commands.group
 
 
 class sra(commands.Cog):
