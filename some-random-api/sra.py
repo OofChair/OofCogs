@@ -2,7 +2,7 @@ import aiohttp
 from redbot.core import commands
 
 
-class Mycog(commands.Cog):
+class SRA(commands.Cog):
     """My custom cog"""
 
     @commands.command()

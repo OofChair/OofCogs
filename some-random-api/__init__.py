@@ -1,5 +1,5 @@
-from .mycog import Mycog
+from .SRA import SRA
 
 
 def setup(bot):
-    bot.add_cog(Mycog())
+    bot.add_cog(SRA())
