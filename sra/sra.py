@@ -7,7 +7,7 @@ class sra(commands.Cog):
     async def dogfact(self, ctx):
         """Gets random dog fact"""
         # Your code will go here
-            async with aiohttp.ClientSession() as session:
-                async with session.get("https://some-random-api.ml/facts/dog") as request:
-                    response = await request.json()
-             await ctx.send(response['fact'])
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://some-random-api.ml/facts/dog") as request:
+                response = await request.json()
+                await ctx.send(response['fact'])
