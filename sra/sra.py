@@ -4,8 +4,8 @@ from redbot.core import commands
 
 class sra(commands.Cog):
     """API requests from Some Random API"""
-   @commands.group()
-   async def fact(self, ctx):
+        @commands.group()
+        async def fact(self, ctx):
        """go ahead children, make my day"""
         pass
 
