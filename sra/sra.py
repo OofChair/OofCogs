@@ -2,7 +2,7 @@ import aiohttp
 import discord
 from redbot.core import commands
 
-class SRA(commands.Cog):
+class sra(commands.Cog):
     """API requests from Some Random API"""
     @commands.group()
     async def fact(self, ctx):
