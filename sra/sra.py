@@ -10,8 +10,8 @@ class sra(commands.Cog):
 
     @fact.command()
     async def dog(ctx, self):
-    async with aiohttp.ClientSession() as session:
-        async with session.get("https://some-random-api.ml/facts/dog") as request:
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://some-random-api.ml/facts/dog") as request:
             response = await request.json()
             embed = discord.Embed(colour=await ctx.embed_colour())
             embed.set_image(url='https://thetrendler.com/wp-content/uploads/2016/08/10tb-dogsperm01-superJumbo.jpg')
