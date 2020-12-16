@@ -4,14 +4,13 @@ from redbot.core import commands
 
 class sra(commands.Cog):
     """API requests from Some Random API"""
-    @commands.group()
-    async def fact(ctx):
-        if ctx.invoked_subcommand is None:
-            await ctx.send('help')
-        """Gets fact from which animal you choose"""
+   @commands.group()
+   async def fact(self, ctx):
+       """go ahead children, make my day"""
+        pass
 
-    @fact.command()
-    async def dog(ctx, self):
+        @fact.command()
+        async def dog(ctx, self):
         async with aiohttp.ClientSession() as session:
             async with session.get("https://some-random-api.ml/facts/dog") as request:
                 response = await request.json()
