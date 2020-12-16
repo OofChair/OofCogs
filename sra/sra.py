@@ -6,6 +6,8 @@ class sra(commands.Cog):
     """API requests from Some Random API"""
     @commands.group()
     async def fact(ctx):
+        if ctx.invoked_subcommand is None:
+            await ctx.send('help')
         """Gets fact from which animal you choose"""
 
     @fact.command()
