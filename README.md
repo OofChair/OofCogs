@@ -19,8 +19,6 @@ Join my discord server for help by clicking [here](https://discord.gg/3PfU5q22wN
 
 Discord: OofChair#0001
 
-Recommended way of contact: My discord server 
-
 # Credits
 
 Huge thanks to all the helpful people in #coding on the [discord support server](https://discord.gg/red)
