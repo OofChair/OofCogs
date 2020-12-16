@@ -10,6 +10,7 @@ class sra(commands.Cog):
 
     @fact.command()
     async def dog(ctx, self):
+        """OWOWOWOWOWOOWWOOWOWO"""
         async with aiohttp.ClientSession() as session:
             async with session.get("https://some-random-api.ml/facts/dog") as request:
                 response = await request.json()
