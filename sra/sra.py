@@ -18,3 +18,14 @@ class sra(commands.Cog):
                 embed.set_image(url='https://thetrendler.com/wp-content/uploads/2016/08/10tb-dogsperm01-superJumbo.jpg')
                 embed.add_field(name='Here\'s a random dog fact!',value=response['fact'])
                 await ctx.send(embed=embed)
+
+    @fact.command()
+    async def cat(self, ctx):
+        """Get a random cat fact"""
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://some-random-api.ml/facts/cat") as request:
+                response = await request.json()
+                embed = discord.Embed(color=(await ctx.embed_colour()))
+                embed.set_image(url='https://i.ytimg.com/vi/C8NAYW-Z54o/maxresdefault.jpg')
+                embed.add_field(name='Here\'s a random cat fact!',value=response['fact'])
+                await ctx.send(embed=embed)
