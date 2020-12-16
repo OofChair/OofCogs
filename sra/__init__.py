@@ -2,4 +2,4 @@ from .sra import sra
 
 
 def setup(bot):
-    bot.add_cog(sra())
+    bot.add_cog(SRA())
