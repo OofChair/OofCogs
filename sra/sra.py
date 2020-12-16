@@ -9,7 +9,7 @@ class sra(commands.Cog):
         """Gets fact from which animal you choose"""
 
     @fact.command()
-    async def dog(ctx, self)
+    async def dog(ctx, self):
         async with aiohttp.ClientSession() as session:
             async with session.get("https://some-random-api.ml/facts/dog") as request:
                 response = await request.json()
