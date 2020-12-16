@@ -7,7 +7,6 @@ class sra(commands.Cog):
     @commands.group()
     async def fact(self, ctx):
        """go ahead children, make my day"""
-        pass
 
         @fact.command()
         async def dog(ctx, self):
