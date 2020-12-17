@@ -9,4 +9,4 @@ class Modmail(commands.Cog):
     async def setup(self, ctx):
         """This does stuff!"""
         # Your code will go here
-        await Guild.create_category("owo")
+        await create_category(name, lol, overwrites=None, reason=None, position=None)
