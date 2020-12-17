@@ -1,4 +1,4 @@
-from .Modmail import Modmail
+from .modmail import modmail
 
 
 def setup(bot):
