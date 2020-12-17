@@ -2,4 +2,5 @@ from .modmail import Modmail
 
 
 def setup(bot):
-    bot.add_cog(Modmail())
+    n = Modmail(bot)
+    bot.add_cog(n)
