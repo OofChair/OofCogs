@@ -1,5 +1,5 @@
-from .sra import sra
+from .sra import SRA
 
 
 def setup(bot):
-    bot.add_cog(sra())
+    bot.add_cog(SRA())
