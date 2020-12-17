@@ -3,29 +3,10 @@ import discord
 from redbot.core import commands
 
 class Modmail(commands.Cog):
-    """API requests from Some Random API"""
-    @commands.group()
-    async def lol(self, ctx):
-       """go ahead children, make my day"""
+    """Modmail uwu"""
 
-    @lol.command()
-    async def bitch(self, ctx):
-        """Get a random dog fact"""
-        async with aiohttp.ClientSession() as session:
-            async with session.get("https://some-random-api.ml/facts/dog") as request:
-                response = await request.json()
-                embed = discord.Embed(color=(await ctx.embed_colour()))
-                embed.set_image(url='https://thetrendler.com/wp-content/uploads/2016/08/10tb-dogsperm01-superJumbo.jpg')
-                embed.add_field(name='Here\'s a random dog fact!',value=response['fact'])
-                await ctx.send(embed=embed)
-
-    @lol.command()
-    async def iamdead(self, ctx):
-        """Get a random cat fact"""
-        async with aiohttp.ClientSession() as session:
-            async with session.get("https://some-random-api.ml/facts/cat") as request:
-                response = await request.json()
-                embed = discord.Embed(color=(await ctx.embed_colour()))
-                embed.set_image(url='https://i.ytimg.com/vi/C8NAYW-Z54o/maxresdefault.jpg')
-                embed.add_field(name='Here\'s a random cat fact!',value=response['fact'])
-                await ctx.send(embed=embed)
+    @commands.command()
+    async def test(self, ctx):
+        """This does stuff!"""
+        # Your code will go here
+        await Guild.create_category("owo")
