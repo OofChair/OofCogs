@@ -1,7 +1,7 @@
 from redbot.core import commands
 import discord
 
-class Modmail(commands.Cog):
+class modmail(commands.Cog):
     """My custom cog"""
 
     @commands.command()
