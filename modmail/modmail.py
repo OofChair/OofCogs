@@ -5,11 +5,11 @@ from redbot.core import commands
 class Modmail(commands.Cog):
     """API requests from Some Random API"""
     @commands.group()
-    async def fact(self, ctx):
+    async def lol(self, ctx):
        """go ahead children, make my day"""
 
-    @fact.command()
-    async def dog(self, ctx):
+    @lol.command()
+    async def bitch(self, ctx):
         """Get a random dog fact"""
         async with aiohttp.ClientSession() as session:
             async with session.get("https://some-random-api.ml/facts/dog") as request:
@@ -20,7 +20,7 @@ class Modmail(commands.Cog):
                 await ctx.send(embed=embed)
 
     @fact.command()
-    async def cat(self, ctx):
+    async def iamdead(self, ctx):
         """Get a random cat fact"""
         async with aiohttp.ClientSession() as session:
             async with session.get("https://some-random-api.ml/facts/cat") as request:
