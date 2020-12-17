@@ -19,7 +19,7 @@ class Modmail(commands.Cog):
                 embed.add_field(name='Here\'s a random dog fact!',value=response['fact'])
                 await ctx.send(embed=embed)
 
-    @fact.command()
+    @lol.command()
     async def iamdead(self, ctx):
         """Get a random cat fact"""
         async with aiohttp.ClientSession() as session:
