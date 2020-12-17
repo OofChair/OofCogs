@@ -1,10 +1,12 @@
 from redbot.core import commands
+import discord
 
 class Modmail(commands.Cog):
     """My custom cog"""
 
     @commands.command()
-    async def test(self, ctx):
+    async def setup(self, ctx):
         """This does stuff!"""
         # Your code will go here
-        await ctx.send("Test cog for OofChairCogs :D")
+        await Guild-create_category("wot")
+        await ctx.send("owo")
