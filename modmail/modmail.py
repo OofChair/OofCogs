@@ -10,3 +10,4 @@ class Modmail(commands.Cog):
         """This does stuff!"""
         # Your code will go here
         await ctx.guild.create_category("lol does this work? owo")
+        await ctx.send("Done!")
