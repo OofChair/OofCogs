@@ -6,7 +6,7 @@ class Modmail(commands.Cog):
     """Modmail uwu"""
 
     @commands.command()
-    async def test(self, ctx):
+    async def setup(self, ctx):
         """This does stuff!"""
         # Your code will go here
         await Guild.create_category("owo")
