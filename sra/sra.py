@@ -38,6 +38,6 @@ class SRA(commands.Cog):
                 response = await request.json()
                 await ctx.send(user.mention)
                 embed = discord.Embed(color=(await ctx.embed_colour()))
-                embed.set_image(url=response['link'])
+                embed.set_image(value=response['link'])
                 embed.add_field(name='ctx.author.mention hugged you!')
                 await ctx.send(embed=embed)
