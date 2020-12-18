@@ -5,6 +5,6 @@
     "short" : "A cog that makes other people say things!",
     "requirements" : ["aiohttp"],
     "description" : "This cog imitates the actions of Tupperbox, which can make webhooks imitate people saying things.",
-    "permissions" : ["manage_webhooks", "attach_files"],
+    "permissions" : ["manage_webhooks", "attach_files", "manage_messages"],
     "tags" : ["fun, meme"]
 }
