@@ -36,7 +36,7 @@ class SRA(commands.Cog):
         async with aiohttp.ClientSession() as session:
             async with session.get("https://some-random-api.ml/animu/hug") as request:
                 response = await request.json()
+                await ctx.send(user.mention)
                 embed = discord.Embed(color=(await ctx.embed_colour()))
-                embed.set_image(value=response[link])
                 embed.add_field(name='ctx.author.mention hugged user.mention!')
                 await ctx.send(embed=embed)
