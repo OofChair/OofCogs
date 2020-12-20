@@ -32,12 +32,11 @@ class SRA(commands.Cog):
 
     @commands.command()
     async def hug(self, ctx, user: discord.Member):
-        """Get a random dog fact"""
+        """Hug a user"""
         async with aiohttp.ClientSession() as session:
             async with session.get("https://some-random-api.ml/animu/hug") as request:
                 response = await request.json()
-                await ctx.send(user.mention)
                 embed = discord.Embed(color=(await ctx.embed_colour()))
                 embed.set_image(value=response[link])
-                embed.add_field(name='ctx.author.mention hugged you!')
+                embed.add_field(name='ctx.author.mention hugged user.mention!')
                 await ctx.send(embed=embed)
