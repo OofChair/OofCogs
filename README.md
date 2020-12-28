@@ -4,7 +4,10 @@ Cog Function
 
 | Name | Status | Description (Click to see full status)
 | --- | --- | --- |
-| sra | **Incomplete** | <details><summary>Cog for fun things from Some Random API that can be viewed [here](https://some-random-api.ml)</summary>Currently incomplete, will be working on it most I can</details> |
+| SRA | **Incomplete** | <details><summary>Cog for fun things from Some Random API that can be viewed [here](https://some-random-api.ml)</summary>Currently incomplete, will be working on it most I can</details> |
+| Modmail | **Incomplete** | <details><summary>Reaction based modmail cog</summary>Reaction based modmail cog, set a message that when reacted creates a new ticket</details> |
+| Tupperbox | **Incomplete** | <details><summary>Say anything as anybody</summary>Uses webhooks to make anyone say anything, except with the little BOT tag next to the name</details> |
+
 
 # Installation
 ### Recommended - Built-in Downloader
