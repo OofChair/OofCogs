@@ -10,12 +10,19 @@ Cog Function
 ### Recommended - Built-in Downloader
 ```
 # Load the Downloader cog (if it isn't already)
+
 [p]load downloader
+
 # Add my repo
+
 [p]repo add OofCogs https://github.com/OofChair/OofCogs
+
 # Add the cog from my repo
+
 [p]cog install OofCogs <cogname>
+
 #Load it into the bot for use
+
 [p]load <cogname>
 ```
 
