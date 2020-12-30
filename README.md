@@ -24,7 +24,7 @@ Cog Function
 
 [p]cog install OofCogs <cogname>
 
-#Load it into the bot for use
+# Load it into the bot for use
 
 [p]load <cogname>
 ```
