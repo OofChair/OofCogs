@@ -1,10 +1,10 @@
 {
     "author" : ["OofChair#0001",
-    "install_msg" : "Thank you for installing the modmail cog from OofCogs :D :sweat_smile:",
+    "install_msg" : "Thank you for installing the modmail cog from OofCogs :D",
     "name" : "SRA",
-    "short" : "A cog that gets random things from Some Random API.",
+    "short" : "A modmail cog.",
     "requirements" : ["aiohttp"],
-    "description" : "This cog can get many different things from Some Random API. ",
+    "description" : "This is a modmail cog ",
     "permissions" : ["List of Bot permissions required"],
     "tags" : ["fun, meme"]
 }
