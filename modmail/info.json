@@ -3,7 +3,7 @@
     "install_msg" : "Thank you for installing the modmail cog from OofCogs :D",
     "name" : "Modmail",
     "short" : "A modmail cog.",
-    "requirements" : ["aiohttp"],
+    "requirements" : [""],
     "description" : "This is a modmail cog ",
     "permissions" : ["List of Bot permissions required"],
     "tags" : ["fun, meme"]
