@@ -1,7 +1,7 @@
 {
     "author" : ["OofChair#0001",
     "install_msg" : "Thank you for installing the modmail cog from OofCogs :D",
-    "name" : "SRA",
+    "name" : "Modmail",
     "short" : "A modmail cog.",
     "requirements" : ["aiohttp"],
     "description" : "This is a modmail cog ",
