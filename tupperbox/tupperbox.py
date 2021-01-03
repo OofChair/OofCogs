@@ -1,4 +1,4 @@
-from redbot.core import commands
+from redbot.core import commands, checks
 import discord
 
 class Tupperbox(commands.Cog):
