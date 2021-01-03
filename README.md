@@ -1,5 +1,7 @@
 # OofCogs for Red Discord Bot V3
 
+![Join My Discord](https://camo.githubusercontent.com/077bb1b1d593186c5dc5520f4b8578c073b2266f2d585aac4e640bbe9f12a4bf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6f696e2532306d792d446973636f72642d626c75652e7376673f7374796c653d666f722d7468652d6261646765)
+
 Cog Function
 
 | Name | Status | Description (Click to see full status)
