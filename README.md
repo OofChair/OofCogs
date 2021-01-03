@@ -1,5 +1,7 @@
 # OofCogs for Red Discord Bot V3
 
+# THIS BRANCH HAS COGS THAT ARE UNCOMPLETE. USE AT YOUR OWN RISK.
+
 Cog Function
 
 | Name | Status | Description (Click to see full status)
