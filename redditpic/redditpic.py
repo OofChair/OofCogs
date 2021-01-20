@@ -12,7 +12,7 @@ class RedditPic(commands.Cog):
     """
     Get a random meme from Reddit.
     """
-
+# Cookiecutter things
     def __init__(self, bot: Red) -> None:
         self.bot = bot
         self.config = Config.get_conf(
@@ -24,6 +24,8 @@ class RedditPic(commands.Cog):
     async def red_delete_data_for_user(self, *, requester: RequestType, user_id: int) -> None:
         # TODO: Replace this with the proper end user data removal handling.
         super().red_delete_data_for_user(requester=requester, user_id=user_id)
+
+# Comamnd code
 
     @commands.command()
     async def randmeme(self, ctx):
