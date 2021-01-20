@@ -37,5 +37,5 @@ Discord: OofChair#0001
 
 # Credits
 
-Huge thanks to all the helpful people in #coding on the [discord support server](https://discord.gg/red)
+Huge thanks to all the helpful people in #coding on the [discord support server](https://discord.gg/red)<br>
 Great help goes out to [epic guy#0715](https://github.com/npc203)  for helping me with the Some Random API cog
