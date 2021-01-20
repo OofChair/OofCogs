@@ -25,8 +25,6 @@ class RedditPic(commands.Cog):
         # TODO: Replace this with the proper end user data removal handling.
         super().red_delete_data_for_user(requester=requester, user_id=user_id)
 
-
-# actual code :Kappa:
     @commands.command()
     async def randmeme(self, ctx):
         """Get a random dog fact"""
