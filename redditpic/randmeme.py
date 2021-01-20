@@ -8,7 +8,7 @@ from redbot.core.config import Config
 RequestType = Literal["discord_deleted_user", "owner", "user", "user_strict"]
 
 
-class RandMeme(commands.Cog):
+class RedditPic(commands.Cog):
     """
     Get a random meme from Reddit.
     """
