@@ -6,8 +6,7 @@ class SRA(commands.Cog):
     """API requests from Some Random API"""
     @commands.group()
     async def fact(self, ctx):
-       """go ahead children, make my day"""
-
+       """Animal facts from Some Random API"""
     @fact.command()
     async def dog(self, ctx):
         """Get a random dog fact"""
