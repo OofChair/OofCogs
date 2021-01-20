@@ -1,0 +1,21 @@
+{
+    "name": "RandMeme",
+    "short": "Get a random meme from Reddit.",
+    "description": "Get a random meme from Reddit and see stats of that post.",
+    "end_user_data_statement": "This cog does not persistently store any data or metadata about users.",
+    "install_msg": "Thank you for installing the RandMeme cog by <@572944636209922059> :D \nThis cog gets a random meme from Reddit.",
+    "author": [
+        "OofChair"
+    ],
+    "required_cogs": {},
+    "requirements": ["aiohttp"],
+    "tags": [
+        "meme",
+        "reddit",
+        "fun"
+    ],
+    "min_bot_version": "3.3.10",
+    "hidden": false,
+    "disabled": false,
+    "type": "COG"
+}
