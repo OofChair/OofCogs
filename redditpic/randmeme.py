@@ -34,5 +34,5 @@ class RedditPic(commands.Cog):
             async with session.get("https://imageapi.fionn.live/reddit/memes") as request:
                 response = await request.json()
                 embed = discord.Embed(color=(await ctx.embed_colour()))
-                embed.add_field(name=response[title],value=response[author]
+                embed.add_field(name=response["title"],value=response["author"])
                 await ctx.send(embed=embed)
