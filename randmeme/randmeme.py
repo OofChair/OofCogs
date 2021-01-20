@@ -34,6 +34,6 @@ class RandMeme(commands.Cog):
             async with session.get("https://imageapi.fionn.live/reddit/memes") as request:
                 response = await request.json()
                 embed = discord.Embed(color=(await ctx.embed_colour()))
-                embed.set_image("{img}")
+                embed.set_image(f"{img}")
                 embed.add_field(name=f'{title}',value=response[f'u/{author}'])
                 await ctx.send(embed=embed)
