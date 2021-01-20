@@ -27,11 +27,11 @@ class RedditPic(commands.Cog):
 
     @commands.command()
     async def randmeme(self, ctx):
-        """Get a random dog fact"""
+        """Get a random meme from r/memes"""
         async with aiohttp.ClientSession() as session:
             async with session.get("https://imageapi.fionn.live/reddit/memes") as request:
                 response = await request.json()
                 embed = discord.Embed(color=(await ctx.embed_colour()))
-                embed.set_image(value=response["img"])
+                embed.set_image(url=response["img"])
                 embed.add_field(name=response["title"],value=response["author"])
                 await ctx.send(embed=embed)
