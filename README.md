@@ -1,6 +1,9 @@
 # OofCogs for Red Discord Bot V3
 
-![Join My Discord](https://camo.githubusercontent.com/077bb1b1d593186c5dc5520f4b8578c073b2266f2d585aac4e640bbe9f12a4bf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6f696e2532306d792d446973636f72642d626c75652e7376673f7374796c653d666f722d7468652d6261646765)
+![OofCogs](https://img.shields.io/badge/OofCogs-by%20OofChair-810d0d?style=for-the-badge)
+![Join My Discord](https://img.shields.io/badge/Join%20My-Discord-7289da?style=for-the-badge&logo=discord&link=https://pwnbot.xyz/support)
+![Red-DiscordBot](https://img.shields.io/badge/Red%20Discord%20Bot-V3%20Cogs-cb533f?link=https://github.com/Cog-Creators/Red-DiscordBot&style=for-the-badge)
+
 
 Cog Function
 
