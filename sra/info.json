@@ -6,5 +6,6 @@
     "requirements" : ["aiohttp"],
     "description" : "This cog can get many different things from Some Random API. ",
     "permissions" : ["List of Bot permissions required"],
-    "tags" : ["fun, meme"]
+    "tags" : ["fun, meme"],
+    "hidden" : ["true"]
 }
