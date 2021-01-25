@@ -6,5 +6,6 @@
     "requirements" : [""],
     "description" : "This is a modmail cog ",
     "permissions" : ["List of Bot permissions required"],
-    "tags" : ["fun, meme"]
+    "tags" : ["fun, meme"],
+    "hidden" : ["true"]
 }
