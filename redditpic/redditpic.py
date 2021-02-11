@@ -14,7 +14,7 @@ class RedditPic(commands.Cog):
     """
 
 # Version
-    __version__: "0.0.0"
+    __version__ = "0.0.0"
 
 # Cookiecutter things
     def __init__(self, bot: Red) -> None:
