@@ -30,8 +30,8 @@ class RedditPic(commands.Cog):
         super().red_delete_data_for_user(requester=requester, user_id=user_id)
 
         # Misc code
-            def format_help_for_context(self, ctx: commands.Context) -> str:
-        return f"{super().format_help_for_context(ctx)}\n\nAuthor: {self.__author__}\nVersion: {self.__version__}"
+        def format_help_for_context(self, ctx: commands.Context) -> str:
+            return f"{super().format_help_for_context(ctx)}\n\nAuthor: {self.__author__}\nVersion: {self.__version__}"
 
 
 # Comamnd code
