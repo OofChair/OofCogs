@@ -29,11 +29,6 @@ class RedditPic(commands.Cog):
         # TODO: Replace this with the proper end user data removal handling.
         super().red_delete_data_for_user(requester=requester, user_id=user_id)
 
-        # Misc code
-        def format_help_for_context(self, ctx: commands.Context) -> str:
-            return f"{super().format_help_for_context(ctx)}\n\nAuthor: {self.__author__}\nVersion: {self.__version__}"
-
-
 # Comamnd code
 
     @commands.command()
@@ -64,4 +59,4 @@ class RedditPic(commands.Cog):
     @commands.command()
     async def memeversion(self, ctx):
         """Find cog version"""
-        await ctx.send(f"This cog is on version {__version__}")
+        await ctx.send(f"This cog is on version 0.0.1")
