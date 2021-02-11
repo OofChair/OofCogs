@@ -12,6 +12,7 @@ Cog Function
 | --- | --- | --- |
 | SRA | **Incomplete** | <details><summary>Cog for fun things from Some Random API that can be viewed [here](https://some-random-api.ml)</summary>Currently incomplete, will be working on it most I can</details> |
 | Modmail | **Incomplete** | <details><summary>Reaction based modmail cog</summary>Reaction based modmail cog, set a message that when reacted creates a new ticket</details> |
+| RedditPic | **Beta** | <details><summary>Get pictures from Reddit</summary>Get pictures from different subreddits, built in meme command and command to get from other subreddits</details> |
 
 
 # Installation
