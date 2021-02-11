@@ -10,11 +10,11 @@ RequestType = Literal["discord_deleted_user", "owner", "user", "user_strict"]
 
 class RedditPic(commands.Cog):
     """
-    Get a random meme from Reddit.
+    Get a random picture from Reddit subreddits.
     """
 
 # Version
-    __version__ = "0.0.1"
+    __version__ = "1.0.2"
 
 # Cookiecutter things
     def __init__(self, bot: Red) -> None:
@@ -59,4 +59,4 @@ class RedditPic(commands.Cog):
     @commands.command()
     async def memeversion(self, ctx):
         """Find cog version"""
-        await ctx.send(f"This cog is on version 0.0.1")
+        await ctx.send(f"This cog is on version 1.0.2")
