@@ -40,7 +40,7 @@ class RedditPic(commands.Cog):
                 await ctx.send(embed=embed)
 
     @commands.command()
-    async def redditpic(self, ctx, subreddit **kwargs):
+    async def redditpic(self, ctx, subreddit, **kwargs):
         """Get a random meme from r/memes"""
         async with aiohttp.ClientSession() as session:
             async with session.get("https://imageapi.fionn.live/reddit/memes") as request:
