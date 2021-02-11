@@ -38,3 +38,15 @@ class RedditPic(commands.Cog):
                 embed.add_field(name=response["title"],value=f"Posted by u/{response['author']}\nCan't see the picture? [Click here]({response['img']})")
                 embed.set_footer(text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']} | Took {response['took']}")
                 await ctx.send(embed=embed)
+
+    @commands.command()
+    async def redditpic(self, ctx, subreddit **kwargs):
+        """Get a random meme from r/memes"""
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://imageapi.fionn.live/reddit/memes") as request:
+                response = await request.json()
+                embed = discord.Embed(color=(await ctx.embed_colour()))
+                embed.set_image(url=response["img"])
+                embed.add_field(name=response["title"],value=f"Posted by u/{response['author']}\nCan't see the picture? [Click here]({response['img']})")
+                embed.set_footer(text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']} | Took {response['took']}")
+                await ctx.send(embed=embed)
