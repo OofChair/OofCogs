@@ -61,7 +61,7 @@ class RedditPic(commands.Cog):
                 await ctx.send(embed=embed)
 
 
-    @commands.command
+    @commands.command()
     async def memeversion(self, ctx):
         """Find cog version"""
         await ctx.send(__version__)
