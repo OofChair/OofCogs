@@ -12,6 +12,10 @@ class RedditPic(commands.Cog):
     """
     Get a random meme from Reddit.
     """
+
+# Version
+    __version__: "0.0.0"
+
 # Cookiecutter things
     def __init__(self, bot: Red) -> None:
         self.bot = bot
@@ -24,6 +28,11 @@ class RedditPic(commands.Cog):
     async def red_delete_data_for_user(self, *, requester: RequestType, user_id: int) -> None:
         # TODO: Replace this with the proper end user data removal handling.
         super().red_delete_data_for_user(requester=requester, user_id=user_id)
+
+        # Misc code
+            def format_help_for_context(self, ctx: commands.Context) -> str:
+        return f"{super().format_help_for_context(ctx)}\n\nAuthor: {self.__author__}\nVersion: {self.__version__}"
+
 
 # Comamnd code
 
