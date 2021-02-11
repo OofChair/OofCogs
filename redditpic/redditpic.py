@@ -41,7 +41,7 @@ class RedditPic(commands.Cog):
 
     @commands.command()
     async def redditpic(self, ctx, subreddit):
-        """Get a random meme from r/memes"""
+        """Get a random picture from a subreddit \n"""
         async with aiohttp.ClientSession() as session:
             async with session.get(f"https://imageapi.fionn.live/reddit/{subreddit}") as request:
                 response = await request.json()
@@ -50,3 +50,8 @@ class RedditPic(commands.Cog):
                 embed.add_field(name=response["title"],value=f"Posted by u/{response['author']}\nCan't see the picture? [Click here]({response['img']})")
                 embed.set_footer(text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']} | Took {response['took']}")
                 await ctx.send(embed=embed)
+                try:
+                    ...
+                except CommandInvokeError:
+                    await ctx.send("Oops, an error occured! Please try again in a few seconds.")
+                    ...
