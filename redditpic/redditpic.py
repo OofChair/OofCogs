@@ -36,4 +36,5 @@ class RedditPic(commands.Cog):
                 embed = discord.Embed(color=(await ctx.embed_colour()))
                 embed.set_image(url=response["img"])
                 embed.add_field(name=response["title"],value=f"u/{response['author']}")
+                embed.set_footer(text=f"{response['upvotes']} :+1:")
                 await ctx.send(embed=embed)
