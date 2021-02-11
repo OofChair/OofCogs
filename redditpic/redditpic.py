@@ -14,7 +14,7 @@ class RedditPic(commands.Cog):
     """
 
 # Version
-    __version__ = "1.0.2"
+    __version__ = "1.0.3"
 
 # Cookiecutter things
     def __init__(self, bot: Red) -> None:
@@ -44,7 +44,7 @@ class RedditPic(commands.Cog):
                 await ctx.send(embed=embed)
 
     @commands.command()
-    async def redditpic(self, ctx, subreddit):
+    async def subr(self, ctx, subreddit):
         """Get a random picture from a subreddit \n\n If an error occurs, please wait a few seconds, then try again."""
         async with aiohttp.ClientSession() as session:
             async with session.get(f"https://imageapi.fionn.live/reddit/{subreddit}") as request:
@@ -59,4 +59,4 @@ class RedditPic(commands.Cog):
     @commands.command()
     async def memeversion(self, ctx):
         """Find cog version"""
-        await ctx.send(f"This cog is on version 1.0.2")
+        await ctx.send(f"This cog is on version 1.0.3")
