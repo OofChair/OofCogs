@@ -36,9 +36,16 @@ Cog Function
 ```
 
 # Contact
+
+### No support will be given for unfinished cogs, like Modmail and SRA.
+
 Join my discord server for help by clicking [here](https://discord.gg/3PfU5q22wN)
 
 Discord: OofChair#0001
+
+I will also respond to messages in `#support_othercogs` in the [3rd party cog server](https://discord.gg/GET4DVk). No need to ping, I check the channel
+
+
 
 # Credits
 
