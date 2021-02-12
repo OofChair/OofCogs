@@ -1,9 +1,9 @@
 # OofCogs for Red Discord Bot V3
 # NONE OF THESE COGS ARE CURRENTLY FINISHED. INSTALL AT YOUR OWN RISK.
 
-![OofCogs](https://img.shields.io/badge/OofCogs-by%20OofChair-810d0d?style=for-the-badge)
-![Join My Discord](https://img.shields.io/badge/Join%20My-Discord-7289da?style=for-the-badge&logo=discord&link=https://pwnbot.xyz/support)
-![Red-DiscordBot](https://img.shields.io/badge/Red%20Discord%20Bot-V3%20Cogs-cb533f?link=https://github.com/Cog-Creators/Red-DiscordBot&style=for-the-badge)
+[![OofCogs](https://img.shields.io/badge/OofCogs-by%20OofChair-810d0d?style=for-the-badge)](https://github.com/OofChair/OofCogs)
+[![Join my Discord](https://img.shields.io/badge/Join%20My-Discord-7289da?style=for-the-badge&logo=discord&link=https://pwnbot.xyz/support)](http://pwnbot.xyz/support)
+[![Red-DiscordBot](https://img.shields.io/badge/Red%20Discord%20Bot-V3%20Cogs-cb533f?link=https://github.com/Cog-Creators/Red-DiscordBot&style=for-the-badge)](http://github.com/Cog-Creators/Red-DiscordBot)
 
 
 Cog Function
