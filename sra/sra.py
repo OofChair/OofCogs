@@ -37,5 +37,5 @@ class SRA(commands.Cog):
                 response = await request.json()
                 embed = discord.Embed(color=(await ctx.embed_colour()))
                 embed.set_image(url=response["link"])
-                embed.add_field(name=f"{ctx.author} just hugged someone!", value=f"{ctx.author.mention} hugged {user.mention}!")
+                embed.add_field(name=f"{ctx.author.name} just hugged someone!", value=f"{ctx.author.mention} hugged {user.mention}!")
                 await ctx.send(embed=embed)
