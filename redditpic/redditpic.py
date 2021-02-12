@@ -61,8 +61,9 @@ class RedditPic(commands.Cog):
                     f"https://imageapi.fionn.live/reddit/{subreddit}"
                     ) as request:
                     response = await request.json()
-                        except {response['err']}:
-                            await ctx.send("test")
+                    except {response['err']}:
+                    await ctx.send("test")
+
                 embed = discord.Embed(color=(await ctx.embed_colour()))
 
                 embed.set_image(url=response["img"])
