@@ -58,11 +58,11 @@ class RedditPic(commands.Cog):
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(
-                    f"https://imageapi.fionn.live/reddit/{subreddit}"
-                    ) as request:
-                    response = await request.json()
-                    except {response['err']}:
-                    await ctx.send("test")
+                f"https://imageapi.fionn.live/reddit/{subreddit}"
+                ) as request:
+                response = await request.json()
+            except {response['err']}:
+                await ctx.send("test")
 
                 embed = discord.Embed(color=(await ctx.embed_colour()))
 
