@@ -13,10 +13,10 @@ class RedditPic(commands.Cog):
     Get a random picture from Reddit subreddits.
     """
 
-# Version
+    # Version
     __version__ = "1.0.3"
 
-# Cookiecutter things
+    # Cookiecutter things
     def __init__(self, bot: Red) -> None:
         self.bot = bot
         self.config = Config.get_conf(
@@ -25,36 +25,51 @@ class RedditPic(commands.Cog):
             force_registration=True,
         )
 
-    async def red_delete_data_for_user(self, *, requester: RequestType, user_id: int) -> None:
+    async def red_delete_data_for_user(
+        self, *, requester: RequestType, user_id: int
+    ) -> None:
         # TODO: Replace this with the proper end user data removal handling.
         super().red_delete_data_for_user(requester=requester, user_id=user_id)
 
-# Comamnd code
+    # Comamnd code
 
     @commands.command()
     async def randmeme(self, ctx):
         """Get a random meme from r/memes"""
         async with aiohttp.ClientSession() as session:
-            async with session.get("https://imageapi.fionn.live/reddit/memes") as request:
+            async with session.get(
+                "https://imageapi.fionn.live/reddit/memes"
+            ) as request:
                 response = await request.json()
                 embed = discord.Embed(color=(await ctx.embed_colour()))
                 embed.set_image(url=response["img"])
-                embed.add_field(name=response["title"],value=f"Posted by u/{response['author']}\nCan't see the picture? [Click here]({response['img']})")
-                embed.set_footer(text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']} | Took {response['took']}")
+                embed.add_field(
+                    name=response["title"],
+                    value=f"Posted by u/{response['author']}\nCan't see the picture? [Click here]({response['img']})",
+                )
+                embed.set_footer(
+                    text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']} | Took {response['took']}"
+                )
                 await ctx.send(embed=embed)
 
     @commands.command()
     async def subr(self, ctx, subreddit):
         """Get a random picture from a subreddit \n\n If an error occurs, please wait a few seconds, then try again."""
         async with aiohttp.ClientSession() as session:
-            async with session.get(f"https://imageapi.fionn.live/reddit/{subreddit}") as request:
+            async with session.get(
+                f"https://imageapi.fionn.live/reddit/{subreddit}"
+            ) as request:
                 response = await request.json()
                 embed = discord.Embed(color=(await ctx.embed_colour()))
                 embed.set_image(url=response["img"])
-                embed.add_field(name=response["title"],value=f"Posted by u/{response['author']}\nCan't see the picture? [Click here]({response['img']})")
-                embed.set_footer(text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']} | Took {response['took']}")
+                embed.add_field(
+                    name=response["title"],
+                    value=f"Posted by u/{response['author']}\nCan't see the picture? [Click here]({response['img']})",
+                )
+                embed.set_footer(
+                    text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']} | Took {response['took']}"
+                )
                 await ctx.send(embed=embed)
-
 
     @commands.command()
     async def memeversion(self, ctx):

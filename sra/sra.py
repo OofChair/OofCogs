@@ -2,11 +2,14 @@ import aiohttp
 import discord
 from redbot.core import commands
 
+
 class SRA(commands.Cog):
     """API requests from Some Random API"""
+
     @commands.group()
     async def fact(self, ctx):
-       """Animal facts from Some Random API"""
+        """Animal facts from Some Random API"""
+
     @fact.command()
     async def dog(self, ctx):
         """Get a random dog fact"""
@@ -14,8 +17,12 @@ class SRA(commands.Cog):
             async with session.get("https://some-random-api.ml/facts/dog") as request:
                 response = await request.json()
                 embed = discord.Embed(color=(await ctx.embed_colour()))
-                embed.set_image(url='https://thetrendler.com/wp-content/uploads/2016/08/10tb-dogsperm01-superJumbo.jpg')
-                embed.add_field(name='Here\'s a random dog fact!',value=response['fact'])
+                embed.set_image(
+                    url="https://thetrendler.com/wp-content/uploads/2016/08/10tb-dogsperm01-superJumbo.jpg"
+                )
+                embed.add_field(
+                    name="Here's a random dog fact!", value=response["fact"]
+                )
                 await ctx.send(embed=embed)
 
     @fact.command()
@@ -25,8 +32,12 @@ class SRA(commands.Cog):
             async with session.get("https://some-random-api.ml/facts/cat") as request:
                 response = await request.json()
                 embed = discord.Embed(color=(await ctx.embed_colour()))
-                embed.set_image(url='https://i.ytimg.com/vi/C8NAYW-Z54o/maxresdefault.jpg')
-                embed.add_field(name='Here\'s a random cat fact!',value=response['fact'])
+                embed.set_image(
+                    url="https://i.ytimg.com/vi/C8NAYW-Z54o/maxresdefault.jpg"
+                )
+                embed.add_field(
+                    name="Here's a random cat fact!", value=response["fact"]
+                )
                 await ctx.send(embed=embed)
 
     @commands.command()
@@ -37,5 +48,8 @@ class SRA(commands.Cog):
                 response = await request.json()
                 embed = discord.Embed(color=(await ctx.embed_colour()))
                 embed.set_image(url=response["link"])
-                embed.add_field(name=f"{ctx.author.name} just hugged someone!", value=f"{ctx.author.mention} hugged {user.mention}!")
+                embed.add_field(
+                    name=f"{ctx.author.name} just hugged someone!",
+                    value=f"{ctx.author.mention} hugged {user.mention}!",
+                )
                 await ctx.send(embed=embed)
