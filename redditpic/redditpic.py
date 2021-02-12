@@ -61,6 +61,10 @@ class RedditPic(commands.Cog):
             ) as request:
                 response = await request.json()
                 embed = discord.Embed(color=(await ctx.embed_colour()))
+
+                except {response['err']}
+                await ctx.send("test")?
+
                 embed.set_image(url=response["img"])
                 embed.add_field(
                     name=response["title"],
