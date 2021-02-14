@@ -61,7 +61,7 @@ class RedditPic(commands.Cog):
             ) as request:
             response = await request.json()
             if response == 'err':
-            ...
+            await ctx.send("woops!")
             else:
         embed = discord.Embed(color=(await ctx.embed_colour()))
 
