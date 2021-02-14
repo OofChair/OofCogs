@@ -36,7 +36,6 @@ class RedditPic(commands.Cog):
     @commands.command()
     async def randmeme(self, ctx):
         """Get a random meme from r/memes"""
-        async with self.session as session:
             async with self.session.get(
             f"https://imageapi.fionn.live/reddit/memes"
             ) as request:
@@ -58,7 +57,6 @@ class RedditPic(commands.Cog):
     @commands.command()
     async def subr(self, ctx, subreddit):
         """Get a random picture from a subreddit \n\n If an error occurs, please wait a few seconds, then try again."""
-        async with self.session as session:
             async with self.session.get(
             f"https://imageapi.fionn.live/reddit/{subreddit}"
             ) as request:
