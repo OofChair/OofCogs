@@ -59,10 +59,10 @@ class RedditPic(commands.Cog):
             async with session.get(
             f"https://imageapi.fionn.live/reddit/{subreddit}"
             ) as request:
-            response = await request.json()
-            if response == 'err':
-            await ctx.send("woops!")
-            else:
+                response = await request.json()
+                if response == 'err':
+                    await ctx.send("woops!")
+                else:
         embed = discord.Embed(color=(await ctx.embed_colour()))
 
         embed.set_image(url=response["img"])
