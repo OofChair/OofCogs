@@ -37,7 +37,7 @@ class RedditPic(commands.Cog):
     async def randmeme(self, ctx):
         """Get a random meme from r/memes"""
         async with self.session as session:
-            async with session.get(
+            async with self.session.get(
             f"https://imageapi.fionn.live/reddit/memes"
             ) as request:
                 response = await request.json()
@@ -45,7 +45,7 @@ class RedditPic(commands.Cog):
                     await ctx.send("woops!")
                 else:
                     embed = discord.Embed(color=(await ctx.embed_colour()))
-                    embed.set_image(url=response["img"])
+                    embed.set_image(url=response["img"]
                     embed.add_field(
                     name=response["title"],
                     value=f"Posted by u/{response['author']}\nCan't see the picture? [Click here]({response['img']})",
@@ -59,7 +59,7 @@ class RedditPic(commands.Cog):
     async def subr(self, ctx, subreddit):
         """Get a random picture from a subreddit \n\n If an error occurs, please wait a few seconds, then try again."""
         async with self.session as session:
-            async with session.get(
+            async with self.session.get(
             f"https://imageapi.fionn.live/reddit/{subreddit}"
             ) as request:
                 response = await request.json()
