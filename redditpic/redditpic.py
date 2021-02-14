@@ -38,19 +38,22 @@ class RedditPic(commands.Cog):
         """Get a random meme from r/memes"""
         async with self.session as session:
             async with session.get(
-                "https://imageapi.fionn.live/reddit/memes"
+            f"https://imageapi.fionn.live/reddit/memes"
             ) as request:
                 response = await request.json()
-                embed = discord.Embed(color=(await ctx.embed_colour()))
-                embed.set_image(url=response["img"])
-                embed.add_field(
+                if response == 'err':
+                    await ctx.send("woops!")
+                else:
+                    embed = discord.Embed(color=(await ctx.embed_colour()))
+                    embed.set_image(url=response["img"])
+                    embed.add_field(
                     name=response["title"],
                     value=f"Posted by u/{response['author']}\nCan't see the picture? [Click here]({response['img']})",
-                )
-                embed.set_footer(
+                    )
+                    embed.set_footer(
                     text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']} | Took {response['took']}"
-                )
-                await ctx.send(embed=embed)
+                    )
+                    await ctx.send(embed=embed)
 
     @commands.command()
     async def subr(self, ctx, subreddit):
