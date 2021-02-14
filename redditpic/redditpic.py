@@ -55,15 +55,14 @@ class RedditPic(commands.Cog):
     @commands.command()
     async def subr(self, ctx, subreddit):
         """Get a random picture from a subreddit \n\n If an error occurs, please wait a few seconds, then try again."""
-        try:
-            async with self.session as session:
-                async with session.get(
-                f"https://imageapi.fionn.live/reddit/{subreddit}"
-                ) as request:
-                    response = await request.json()
-        except {response['err']}:
-            await ctx.send("test")
-
+        async with self.session as session:
+            async with session.get(
+            f"https://imageapi.fionn.live/reddit/{subreddit}"
+            ) as request:
+            response = await request.json()
+            if response == 'err':
+            ...
+            else:
         embed = discord.Embed(color=(await ctx.embed_colour()))
 
         embed.set_image(url=response["img"])
