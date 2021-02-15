@@ -13,7 +13,7 @@ class RedditPic(commands.Cog):
     """
 
     # Version
-    __version__ = "1.0.4"
+    __version__ = "1.0.5"
 
     # Cookiecutter things
     def __init__(self, bot: Red) -> None:
@@ -67,7 +67,12 @@ class RedditPic(commands.Cog):
         ) as request:
             response = await request.json()
             if "err" in response:
-                await ctx.send("woops!")
+                embed = discord.Embed(color=(await ctx.embed_colour()))
+                embed=discord.Embed(title="Oops!", description="**That didn't work!**")
+                embed.add_field(name="The subreddit you are trying to access is not available!", value="Some reasons this might be happening: \n - The subreddit is NSFW\n - The subreddit doesn't have any pictures. \n - The subreddit is blacklisted.", inline=True)
+                embed.add_field(name="If your problem does not match anything above,", value="There might be a problem with the API.", inline=True)
+                embed.set_footer(text="RedditPic cog, (c) OofChair 2021")
+                await ctx.send(embed=embed)
             else:
                     embed = discord.Embed(color=(await ctx.embed_colour()))
                     embed.set_image(url=response["img"])
