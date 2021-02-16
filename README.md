@@ -10,8 +10,7 @@ Cog Function
 
 | Name | Status | Description (Click to see full status)
 | --- | --- | --- |
-| SRA | **Incomplete** | <details><summary>Cog for fun things from Some Random API that can be viewed [here](https://some-random-api.ml)</summary>Currently incomplete, will be working on it most I can</details> |
-| Modmail | **Incomplete** | <details><summary>Reaction based modmail cog</summary>Reaction based modmail cog, set a message that when reacted creates a new ticket</details> |
+| Ticket | **Incomplete** | <details><summary>Reaction based modmail cog</summary>Reaction based modmail cog, set a message that when reacted creates a new ticket</details> |
 | RedditPic | **Beta** | <details><summary>Get pictures from Reddit</summary>Get pictures from different subreddits, built in meme command and command to get from other subreddits</details> |
 
 
@@ -37,7 +36,7 @@ Cog Function
 
 # Contact
 
-### No support will be given for unfinished cogs, like Modmail and SRA.
+### No/little support will be given for unfinished cogs like Ticket and cogs on the dev branch.
 
 Join my discord server for help by clicking [here](https://discord.gg/3PfU5q22wN)
 
@@ -51,4 +50,4 @@ I will also respond to messages in `#support_othercogs` in the [3rd party cog se
 
 Huge thanks to all the helpful people in #coding on the [discord support server](https://discord.gg/red)<br>
 Great help goes out to [epic guy#0715](https://github.com/npc203) for helping me with the Some Random API cog (Now called Fun cog, on dev branch)
-Thanks to @kreusada, @Just-Jojo, and @Otriux for help with the RedditPic cog.
+Thanks to [@kreusada](https://github.com/kreusada), [@Just-Jojo](https://github.com/Just-Jojo), and [@Otriux](https://github.com/Ortiux) for help with the RedditPic cog.
