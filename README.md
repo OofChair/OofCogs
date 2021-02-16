@@ -51,4 +51,4 @@ I will also respond to messages in `#support_othercogs` in the [3rd party cog se
 
 Huge thanks to all the helpful people in #coding on the [discord support server](https://discord.gg/red)<br>
 Great help goes out to [epic guy#0715](https://github.com/npc203) for helping me with the Some Random API cog (Now called Fun cog, on dev branch)
-Thanks to @kreusada, @Just-Jojo, and @Otriux for help with the RedditPic cog.
+Thanks to [@kreusada](https://github.com/kreusada), [@Just-Jojo](https://github.com/Just-Jojo), and [@Otriux](https://github.com/Ortiux) for help with the RedditPic cog.
