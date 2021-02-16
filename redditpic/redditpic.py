@@ -13,7 +13,7 @@ class RedditPic(commands.Cog):
     """
 
     # Version
-    __version__ = "1.0.5"
+    __version__ = "1.0.6"
 
     # Cookiecutter things
     def __init__(self, bot: Red) -> None:
@@ -36,6 +36,7 @@ class RedditPic(commands.Cog):
     @commands.command()
     async def randmeme(self, ctx):
         """Get a random meme from r/memes"""
+        await ctx.trigger_typing()
         async with self.session.get(
             f"https://imageapi.fionn.live/reddit/memes"
         ) as request:
@@ -72,6 +73,7 @@ class RedditPic(commands.Cog):
     @commands.command()
     async def subr(self, ctx, subreddit):
         """Get a random picture from a subreddit \n\n If an error occurs, please wait a few seconds, then try again."""
+        await ctx.trigger_typing()
         async with self.session.get(
             f"https://imageapi.fionn.live/reddit/{subreddit}"
         ) as request:
