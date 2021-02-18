@@ -34,6 +34,7 @@ class Fun(commands.Cog):
     @fact.command()
     async def dog(self, ctx):
         """Get a random dog fact"""
+        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get("https://some-random-api.ml/facts/dog") as request:
                 response = await request.json()
@@ -49,6 +50,7 @@ class Fun(commands.Cog):
     @fact.command()
     async def cat(self, ctx):
         """Get a random cat fact"""
+        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get("https://some-random-api.ml/facts/cat") as request:
                 response = await request.json()
@@ -64,6 +66,7 @@ class Fun(commands.Cog):
     @commands.command()
     async def hug(self, ctx, user: discord.Member):
         """Hug a user"""
+        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get("https://some-random-api.ml/animu/hug") as request:
                 response = await request.json()
