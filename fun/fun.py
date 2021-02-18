@@ -63,7 +63,12 @@ class Fun(commands.Cog):
                 )
                 await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.group()
+    async def action(self, ctx):
+        """Action commands, like hug, kiss, and more"""
+
+
+    @action.command()
     async def hug(self, ctx, user: discord.Member):
         """Hug a user"""
         await ctx.trigger_typing()
