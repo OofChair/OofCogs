@@ -63,6 +63,21 @@ class Fun(commands.Cog):
                 )
                 await ctx.send(embed=embed)
 
+    @fact.command()
+    async def panda(self, ctx):
+        """Get a random panda fact"""
+        await ctx.trigger_typing()
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://some-random-api.ml/facts/panda") as request:
+                response = await request.json()
+                embed = discord.Embed(color=(await ctx.embed_colour()))
+                embed.set_image(
+                    url="https://nationalzoo.si.edu/sites/default/files/support/adopt/giantpanda-03.jpg"
+                )
+                embed.add_field(
+                    name="Here's a random panda fact!", value=response["fact"]
+                )
+                await ctx.send(embed=embed)
     @commands.group()
     async def action(self, ctx):
         """Action commands, like hug, kiss, and more"""
