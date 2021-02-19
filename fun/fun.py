@@ -78,6 +78,23 @@ class Fun(commands.Cog):
                     name="Here's a random panda fact!", value=response["fact"]
                 )
                 await ctx.send(embed=embed)
+
+    @fact.command()
+    async def fox(self, ctx):
+        """Get a random fox fact"""
+        await ctx.trigger_typing()
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://some-random-api.ml/facts/fox") as request:
+                response = await request.json()
+                embed = discord.Embed(color=(await ctx.embed_colour()))
+                embed.set_image(
+                    url="https://whyy.org/wp-content/uploads/2019/02/bigstock-Red-Fox-Cubs-At-Sunset-Curious-283617124.jpg"
+                )
+                embed.add_field(
+                    name="Here's a random fox fact!", value=response["fact"]
+                )
+                await ctx.send(embed=embed)
+
     @commands.group()
     async def action(self, ctx):
         """Action commands, like hug, kiss, and more"""
