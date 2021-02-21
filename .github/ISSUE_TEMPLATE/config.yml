@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Additional Support
+    url: https://pwnbot.xyz/support
+    about: For any private questions regarding support for my cogs.
