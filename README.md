@@ -10,7 +10,6 @@ Cog Function
 
 | Name | Status | Description (Click to see full status)
 | --- | --- | --- |
-| Ticket | **Incomplete** | <details><summary>Reaction based modmail cog</summary>Reaction based modmail cog, set a message that when reacted creates a new ticket</details> |
 | RedditPic | **Beta** | <details><summary>Get pictures from Reddit</summary>Get pictures from different subreddits, built in meme command and command to get from other subreddits</details> |
 
 
@@ -43,6 +42,8 @@ Join my discord server for help by clicking [here](https://discord.gg/3PfU5q22wN
 Discord: OofChair#0001
 
 I will also respond to messages in `#support_othercogs` in the [3rd party cog server](https://discord.gg/GET4DVk). No need to ping, I check the channel.
+
+For support, please don't open an issue.
 
 
 
