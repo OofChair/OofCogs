@@ -13,7 +13,7 @@ class RedditPic(commands.Cog):
     """
 
     # Version
-    __version__ = "1.0.6"
+    __version__ = "1.0.7"
 
     # Cookiecutter things
     def __init__(self, bot: Red) -> None:
@@ -24,6 +24,11 @@ class RedditPic(commands.Cog):
         #            force_registration=True,
         #        )
         self.session = aiohttp.ClientSession()
+
+
+    # Kill session on cog unload
+    def cog_unload(self):
+        self.bot.loop.run_until_complete(self.session.close())
 
     async def red_delete_data_for_user(
         self, *, requester: RequestType, user_id: int
