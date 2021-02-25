@@ -13,7 +13,7 @@ class RedditPic(commands.Cog):
     """
 
     # Version
-    __version__ = "1.0.7"
+    __version__ = "1.0.8"
 
     # Cookiecutter things
     def __init__(self, bot: Red) -> None:
@@ -49,7 +49,7 @@ class RedditPic(commands.Cog):
             if "err" in response:
                 embed = discord.Embed(color=(await ctx.embed_colour()))
                 embed = discord.Embed(
-                    title="Oops!", description="**That didn't work!**"
+                    title="Oops!", description="**That didn't work!**",  color=(await ctx.embed_colour())
                 )
                 embed.add_field(
                     name="The subreddit you are trying to access is not available!",
@@ -84,9 +84,8 @@ class RedditPic(commands.Cog):
         ) as request:
             response = await request.json()
             if "err" in response:
-                embed = discord.Embed(color=(await ctx.embed_colour()))
                 embed = discord.Embed(
-                    title="Oops!", description="**That didn't work!**"
+                    title="Oops!", description="**That didn't work!**", color=(await ctx.embed_colour())
                 )
                 embed.add_field(
                     name="The subreddit you are trying to access is not available!",

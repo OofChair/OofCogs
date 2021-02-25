@@ -1,6 +1,11 @@
 # RedditPic | Changelog
 ### RedditPic cog,  gets a random picture from [r/memes](https://reddit.com/r/memes), or a subreddit of your choosing.
 
+# v1.0.8
+
+#### Fixed the issue where the embed doesn't use the default embed color.
+
+
 # v1.0.7
 
 #### Bug fixes
