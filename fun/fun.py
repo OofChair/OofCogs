@@ -1,5 +1,6 @@
 from typing import Literal
 
+import sr_api
 import aiohttp
 import discord
 from redbot.core import commands

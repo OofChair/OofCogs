@@ -1,14 +1,14 @@
 {
     "name": "Fun",
     "short": "Fun cog, with fun features.",
-    "description": "Fun cogs with image manimore",
+    "description": "Fun cogs with image, action, and other commands.",
     "end_user_data_statement": "This cog does not persistently store any data or metadata about users.",
     "install_msg": "Thanks for installing the Fun cog from OofCogs :D",
     "author": [
         "OofChair"
     ],
     "required_cogs": {},
-    "requirements": [],
+    "requirements": ["sr_api"],
     "tags": [
         "fun"
     ],
