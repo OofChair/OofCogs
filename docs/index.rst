@@ -5,8 +5,5 @@
 
 OofCogs Docs
 ===================================
-.. image::https://img.shields.io/badge/OofCogs-by%20OofChair-810d0d?style=for-the-badge
+.. image:: https://img.shields.io/badge/OofCogs-by%20OofChair-810d0d?style=for-the-badge
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
