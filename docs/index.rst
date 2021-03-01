@@ -5,7 +5,7 @@
 
 OofCogs Docs
 ===================================
-[![OofCogs](https://img.shields.io/badge/OofCogs-by%20OofChair-810d0d?style=for-the-badge)](https://github.com/OofChair/OofCogs)
+.. image::https://img.shields.io/badge/OofCogs-by%20OofChair-810d0d?style=for-the-badge
 
 * :ref:`genindex`
 * :ref:`modindex`
