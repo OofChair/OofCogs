@@ -3,17 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to OofCogs's documentation!
+OofCogs Docs
 ===================================
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-
-
-Indices and tables
-==================
+[![OofCogs](https://img.shields.io/badge/OofCogs-by%20OofChair-810d0d?style=for-the-badge)](https://github.com/OofChair/OofCogs)
 
 * :ref:`genindex`
 * :ref:`modindex`
