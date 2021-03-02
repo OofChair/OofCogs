@@ -54,10 +54,10 @@ class RedditPic(commands.Cog):
             try:
                 response = await request.json()
             except aiohttp.ContentTypeError:
-                embed = await self.error_embed()
+                embed = await self.error_embed(ctx)
                 return await ctx.send(embed=embed)
             if request.status != 200:
-                embed = await self.error_embed()
+                embed = await self.error_embed(ctx)
                 await ctx.send(embed=embed)
             else:
                 embed = discord.Embed(color=(await ctx.embed_colour()))
@@ -81,10 +81,10 @@ class RedditPic(commands.Cog):
             try:
                 response = await request.json()
             except aiohttp.ContentTypeError:
-                embed = await self.error_embed()
+                embed = await self.error_embed(ctx)
                 return await ctx.send(embed=embed)
             if request.status != 200:
-                embed = await self.error_embed()
+                embed = await self.error_embed(ctx)
                 await ctx.send(embed=embed)
             else:
                 embed = discord.Embed(color=(await ctx.embed_colour()))
