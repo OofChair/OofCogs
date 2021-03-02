@@ -7,3 +7,5 @@ OofCogs Docs
 ===================================
 .. image:: https://img.shields.io/badge/OofCogs-by%20OofChair-810d0d?style=for-the-badge
 
+.. image:: https://readthedocs.org/projects/oofcogs/badge/?version=latest
+
