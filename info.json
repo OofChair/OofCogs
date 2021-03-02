@@ -1,6 +1,6 @@
 {
     "author": ["OofChair#0001"],
-    "install_msg": "Thanks for adding my cogs! Need any support? DM me <@572944636209922059>, join my support server by clicking here: https://pwnbot.xyz/support or open an issue on the repo if you run into a bug.\nWant to see something added to the cogs? Open a feature request on the repo.",
+    "install_msg": "Thanks for adding my cogs! Need any support? DM me <@572944636209922059>, join my support server by clicking here: <https://pwnbot.xyz/support> or open an issue on the repo if you run into a bug.\nWant to see something added to the cogs? Open a feature request on the repo.",
     "name": "OofCogs",
     "short": "Cogs made by OofChair#0001 and others.",
     "description": "Cogs created by a beginner Python coder that are stupid",
