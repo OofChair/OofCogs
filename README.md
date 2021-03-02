@@ -1,5 +1,4 @@
 # OofCogs for Red Discord Bot V3
-# NONE OF THESE COGS ARE CURRENTLY FINISHED. INSTALL AT YOUR OWN RISK.
 
 [![OofCogs](https://img.shields.io/badge/OofCogs-by%20OofChair-810d0d?style=for-the-badge)](https://github.com/OofChair/OofCogs)
 [![Join my Discord](https://img.shields.io/badge/Join%20My-Discord-7289da?style=for-the-badge&logo=discord&link=https://pwnbot.xyz/support)](http://pwnbot.xyz/support)
@@ -51,4 +50,4 @@ For support, please don't open an issue.
 
 Huge thanks to all the helpful people in #coding on the [discord support server](https://discord.gg/red)<br>
 Great help goes out to [epic guy#0715](https://github.com/npc203) for helping me with the Some Random API cog (Now called Fun cog, on dev branch)
-Thanks to [@kreusada](https://github.com/kreusada), [@Just-Jojo](https://github.com/Just-Jojo), and [@Otriux](https://github.com/Ortiux) for help with the RedditPic cog.
+Thanks to [@kreusada](https://github.com/kreusada), [@Just-Jojo](https://github.com/Just-Jojo), and [@Otriux](https://github.com/Otriux) for help with the RedditPic cog.
