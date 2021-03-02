@@ -34,7 +34,7 @@ Cog Function
 
 # Contact
 
-### No/little support will be given for unfinished cogs like Ticket and cogs on the dev branch.
+### No/little support will be given for unfinished cogs and cogs on the dev branch.
 
 Join my discord server for help by clicking [here](https://discord.gg/3PfU5q22wN)
 
