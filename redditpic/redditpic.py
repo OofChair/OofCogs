@@ -42,7 +42,7 @@ class RedditPic(commands.Cog):
         # TODO: Replace this with the proper end user data removal handling.
         super().red_delete_data_for_user(requester=requester, user_id=user_id)
 
-    # Comamnd code
+    # Command code
 
     @commands.command()
     async def randmeme(self, ctx):
@@ -55,7 +55,7 @@ class RedditPic(commands.Cog):
                 response = await request.json()
             except aiohttp.ContentTypeError:
                 embed = await self.error_embed()
-                await ctx.send(embed=embed)
+                return await ctx.send(embed=embed)
             if request.status != 200:
                 embed = await self.error_embed()
                 await ctx.send(embed=embed)
@@ -99,7 +99,7 @@ class RedditPic(commands.Cog):
                 await ctx.send(embed=embed)
 
     @commands.command()
-    async def memeversion(self, ctx):
+    async def memeversion(self, ctx: commands.Context):
         """Find cog version"""
         await ctx.send(f"This cog is on version {self.__version__}.")
     
