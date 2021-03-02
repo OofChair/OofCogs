@@ -99,11 +99,11 @@ class RedditPic(commands.Cog):
                 await ctx.send(embed=embed)
 
     @commands.command()
-    async def memeversion(self, ctx: commands.Context):
+    async def memeversion(self, ctx):
         """Find cog version"""
         await ctx.send(f"This cog is on version {self.__version__}.")
     
-    async def error_embed(self):
+    async def error_embed(self, ctx: commands.Context):
         embed = discord.Embed(
             title="Oops!", description="**That didn't work!**", color=(await ctx.embed_colour())
         )
