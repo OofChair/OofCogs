@@ -13,7 +13,7 @@ class RedditPic(commands.Cog):
     """
 
     # Version
-    __version__ = "1.0.8"
+    __version__ = "1.0.9"
     
     def format_help_for_context(self, ctx):
         """Thanks Sinbad!"""
