@@ -14,11 +14,6 @@ class RedditPic(commands.Cog):
 
     # Version
     __version__ = "1.0.8"
-    
-    def format_help_for_context(self, ctx):
-        pre_processed = super().format_help_for_context(ctx)
-        n = "\n" if "\n\n" not in pre_processed else ""
-        return f"{pre_processed}{n}\nCog Version: {self.__version__}"
 
     # Cookiecutter things
     def __init__(self, bot: Red) -> None:
@@ -29,7 +24,6 @@ class RedditPic(commands.Cog):
         #            force_registration=True,
         #        )
         self.session = aiohttp.ClientSession()
-
 
     # Kill session on cog unload
     def cog_unload(self):
@@ -53,11 +47,11 @@ class RedditPic(commands.Cog):
             try:
                 response = await request.json()
             except aiohttp.ContentTypeError:
-                embed = await self.error_embed()
+                embed = await self.error_embed(ctx)
                 return await ctx.send(embed=embed)
             if request.status != 200:
                 embed = await self.error_embed()
-                return await ctx.send(embed=embed)
+                await ctx.send(embed=embed)
             else:
                 embed = discord.Embed(color=(await ctx.embed_colour()))
                 embed.set_image(url=response["img"])
@@ -80,11 +74,11 @@ class RedditPic(commands.Cog):
             try:
                 response = await request.json()
             except aiohttp.ContentTypeError:
-                embed = await self.error_embed()
+                embed = await self.error_embed(ctx)
                 return await ctx.send(embed=embed)
             if request.status != 200:
                 embed = await self.error_embed()
-                return await ctx.send(embed=embed)
+                await ctx.send(embed=embed)
             else:
                 embed = discord.Embed(color=(await ctx.embed_colour()))
                 embed.set_image(url=response["img"])
@@ -101,15 +95,17 @@ class RedditPic(commands.Cog):
     async def memeversion(self, ctx):
         """Find cog version"""
         await ctx.send(f"This cog is on version {self.__version__}.")
-    
-    async def error_embed(self):
+
+    async def error_embed(self, ctx):
         embed = discord.Embed(
-            title="Oops!", description="**That didn't work!**", color=(await ctx.embed_colour())
+            title="Oops!",
+            description="**That didn't work!**",
+            color=(await ctx.embed_colour()),
         )
         embed.add_field(
-                    name="The subreddit you are trying to access is not available!",
-                    value="Some reasons this might be happening: \n - The subreddit is NSFW\n - The subreddit doesn't have any pictures. \n - The subreddit is blacklisted.",
-                    inline=True,
+            name="The subreddit you are trying to access is not available!",
+            value="Some reasons this might be happening: \n - The subreddit is NSFW\n - The subreddit doesn't have any pictures. \n - The subreddit is blacklisted.",
+            inline=True,
         )
         embed.add_field(
             name="If your problem does not match anything above,",
