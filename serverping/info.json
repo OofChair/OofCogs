@@ -1,0 +1,20 @@
+{
+    "name": "ServerPing",
+    "short": "Ping a server.",
+    "description": "Ping a domain or an IP.",
+    "end_user_data_statement": "This cog does not persistently store any data or metadata about users.",
+    "install_msg": "Thank you for installing the ServerPing cog.",
+    "author": [
+        "OofChair"
+    ],
+    "required_cogs": {},
+    "requirements": ["git+https://github.com/OofChair/simple-ping"],
+    "tags": [
+        "ping",
+        "fun"
+    ],
+    "min_bot_version": "3.3.10",
+    "hidden": false,
+    "disabled": false,
+    "type": "COG"
+}
