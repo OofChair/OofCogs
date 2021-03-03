@@ -50,7 +50,7 @@ class ServerPing(commands.Cog):
             msg = await ctx.send(content=f"I have edited your address to be pingable... (**{server}**)")
         await ctx.trigger_typing()
         ping = Ping(server)
-        embed = discord.Embed(color=(await ctx.embed_colour()))
+        embed = discord.Embed(color=await ctx.embed_colour())
         embed = discord.Embed(title=f"Pinged {server}!")
         embed.add_field(
             name=f":green_circle: **Server returned {ping.avg} ms!**",
