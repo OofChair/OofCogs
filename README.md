@@ -9,7 +9,8 @@ Cog Function
 
 | Name | Status | Description (Click to see full status)
 | --- | --- | --- |
-| RedditPic | **Beta** | <details><summary>Get pictures from Reddit</summary>Get pictures from different subreddits, built in meme command and command to get from other subreddits</details> |
+| RedditPic | **Release** | <details><summary>Get pictures from Reddit</summary>Get pictures from different subreddits, built in meme command and command to get from other subreddits</details> |
+| ServerPing | **Release** | <details><summary>Ping a domain or an IP to get the latency</summary>Ping an IP or a domain and get the latency back</details> |
 
 
 # Installation
@@ -50,4 +51,4 @@ For support, please don't open an issue.
 
 Huge thanks to all the helpful people in #coding on the [discord support server](https://discord.gg/red)<br>
 Great help goes out to [epic guy#0715](https://github.com/npc203) for helping me with the Some Random API cog (Now called Fun cog, on dev branch)
-Thanks to [@kreusada](https://github.com/kreusada), [@Just-Jojo](https://github.com/Just-Jojo), and [@Otriux](https://github.com/Otriux) for help with the RedditPic cog.
+Thanks to [@kreusada](https://github.com/kreusada), [@Just-Jojo](https://github.com/Just-Jojo), [@Andeeeee](https://github.com/Andeeeee)and [@Otriux](https://github.com/Otriux) for help with the RedditPic cog.
