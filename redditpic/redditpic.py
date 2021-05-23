@@ -13,7 +13,7 @@ class RedditPic(commands.Cog):
     """
 
     # Version
-    __version__ = "1.0.9"
+    __version__ = "1.1.0"
     
     def format_help_for_context(self, ctx):
         """Thanks Sinbad!"""
@@ -49,8 +49,8 @@ class RedditPic(commands.Cog):
         """Get a random meme from r/memes"""
         await ctx.trigger_typing()
         async with self.session.get(
-            f"https://imageapi.fionn.live/reddit/memes"
-        ) as request:
+                f"https://imageapi.fionn.live/reddit/memes"
+            ) as request:
             try:
                 response = await request.json()
             except aiohttp.ContentTypeError:
@@ -58,7 +58,6 @@ class RedditPic(commands.Cog):
                 return await ctx.send(embed=embed)
             if request.status != 200:
                 embed = await self.error_embed(ctx)
-                await ctx.send(embed=embed)
             else:
                 embed = discord.Embed(color=(await ctx.embed_colour()))
                 embed.set_image(url=response["img"])
@@ -67,17 +66,18 @@ class RedditPic(commands.Cog):
                     value=f"Posted by u/{response['author']}\nCan't see the picture? [Click here]({response['img']})",
                 )
                 embed.set_footer(
-                    text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']} | Took {response['took']}"
+                    text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']}"
                 )
-                await ctx.send(embed=embed)
+
+            await ctx.send(embed=embed)
 
     @commands.command()
     async def subr(self, ctx, subreddit):
         """Get a random picture from a subreddit \n\n If an error occurs, please wait a few seconds, then try again."""
         await ctx.trigger_typing()
         async with self.session.get(
-            f"https://imageapi.fionn.live/reddit/{subreddit}"
-        ) as request:
+                f"https://imageapi.fionn.live/reddit/{subreddit}"
+            ) as request:
             try:
                 response = await request.json()
             except aiohttp.ContentTypeError:
@@ -85,7 +85,6 @@ class RedditPic(commands.Cog):
                 return await ctx.send(embed=embed)
             if request.status != 200:
                 embed = await self.error_embed(ctx)
-                await ctx.send(embed=embed)
             else:
                 embed = discord.Embed(color=(await ctx.embed_colour()))
                 embed.set_image(url=response["img"])
@@ -94,9 +93,10 @@ class RedditPic(commands.Cog):
                     value=f"Posted by u/{response['author']}\nCan't see the picture? [Click here]({response['img']})",
                 )
                 embed.set_footer(
-                    text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']} | Took {response['took']}"
+                    text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']}"
                 )
-                await ctx.send(embed=embed)
+
+            await ctx.send(embed=embed)
 
     @commands.command()
     async def memeversion(self, ctx):
