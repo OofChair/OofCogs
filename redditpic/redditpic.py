@@ -13,7 +13,7 @@ class RedditPic(commands.Cog):
     """
 
     # Version
-    __version__ = "1.0.9"
+    __version__ = "1.1.0"
     
     def format_help_for_context(self, ctx):
         """Thanks Sinbad!"""
@@ -66,7 +66,7 @@ class RedditPic(commands.Cog):
                     value=f"Posted by u/{response['author']}\nCan't see the picture? [Click here]({response['img']})",
                 )
                 embed.set_footer(
-                    text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']} | Took {response['took']}"
+                    text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']}"
                 )
 
             await ctx.send(embed=embed)
@@ -93,7 +93,7 @@ class RedditPic(commands.Cog):
                     value=f"Posted by u/{response['author']}\nCan't see the picture? [Click here]({response['img']})",
                 )
                 embed.set_footer(
-                    text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']} | Took {response['took']}"
+                    text=f"{response['upvotes']} 👍 {response['downvotes']} 👎 | Posted on: r/{response['endpoint']}"
                 )
 
             await ctx.send(embed=embed)
