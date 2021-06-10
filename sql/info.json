@@ -1,0 +1,21 @@
+{
+    "name": "MySQL",
+    "short": "MySQL experiment og",
+    "description": "A long description of the cog.",
+    "end_user_data_statement": "This cog does not persistently store any data or metadata about users.",
+    "install_msg": "mysql",
+    "author": [
+        "oofchair",
+        ""
+    ],
+    "required_cogs": {},
+    "requirements": ["mysql-connector-python"],
+    "tags": [
+        "mysql",
+        "dev"
+    ],
+    "min_bot_version": "3.3.10",
+    "hidden": false,
+    "disabled": false,
+    "type": "COG"
+}
