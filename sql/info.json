@@ -3,7 +3,7 @@
     "short": "MySQL experiment og",
     "description": "A long description of the cog.",
     "end_user_data_statement": "This cog does not persistently store any data or metadata about users.",
-    "install_msg": "mysql",
+    "install_msg": "Thank you for installing the SQL cog from OofCogs. This cog requires a little setup, please go to https://github.com/OofChair/OofCogs/tree/cog/sql/sql/README.md",
     "author": [
         "oofchair",
         ""

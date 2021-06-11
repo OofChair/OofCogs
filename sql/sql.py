@@ -16,6 +16,8 @@ class SQL(commands.Cog):
     SQL experiment og
     """
 
+    
+
     def __init__(self, bot: Red) -> None:
         self.bot = bot
         self.config = Config.get_conf(
@@ -23,12 +25,22 @@ class SQL(commands.Cog):
             identifier=572944636209922059,
             force_registration=True,
         )
-        self.sqql = mysql.connector.connect(user='discorrd', password='discordpass', database="")
-        self.cursorr = self.sqql.cursor()
+        self.startup_task = self.bot.loop.create_task(self.startup())
 
+    async def startup(self):
+        mysql_cred = await self.bot.get_shared_api_tokens("mysql")
+        self.sqql = mysql.connector.connect(user=mysql_cred.get("username"), password=mysql_cred.get("password"), database="")
+        self.cursorr = self.sqql.cursor()
+        self.cursorr.execute("SET @@wait_timeout = 31536000")
+
+    def cog_unload(self):
+        self.startup_task.cancel()
+    
     async def red_delete_data_for_user(self, *, requester: RequestType, user_id: int) -> None:
         # TODO: Replace this with the proper end user data removal handling.
         super().red_delete_data_for_user(requester=requester, user_id=user_id)
+    
+    
     @commands.is_owner()
     @commands.group()
     async def sql(self, ctx):
