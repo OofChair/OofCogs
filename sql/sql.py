@@ -8,6 +8,7 @@ from redbot.core.config import Config
 # MySQL
 import mysql.connector
 
+
 RequestType = Literal["discord_deleted_user", "owner", "user", "user_strict"]
 
 
@@ -16,7 +17,7 @@ class SQL(commands.Cog):
     SQL cog that can be used for interacting with multiple databases.
     """
 
-    __version__ = "1.0.1"
+    __version__ = "1.0.2"
 
     def __init__(self, bot: Red) -> None:
         self.bot = bot
@@ -80,6 +81,9 @@ class SQL(commands.Cog):
         sql_databases = "show databases"
         self.cursorr.execute(sql_databases)
         dblist = ", ".join(x for (x,) in self.cursorr)
+        if len(database_name) > 64:
+            await ctx.reply("This name is too long, please choose a shorter name.")
+            return
         if database_name in dblist:
             await ctx.reply(f"The \"{database_name}\" database already exists, please use a different name.", mention_author=False)
         else:
@@ -93,13 +97,21 @@ class SQL(commands.Cog):
         await ctx.trigger_typing()
         databases = "show databases"
         self.cursorr.execute(databases)
-        embed = discord.Embed(
-            title="MySQL Databases",
-            description="Here are the databases that your have on your machine:",
-        )
-        embed.add_field(name="Databases:", value=", ".join(x for (x,) in self.cursorr))
-        embed.set_footer(text="MySQL")
-        await ctx.reply(embed=embed, mention_author=False)
+        if len(", ".join(x for (x,) in self.cursorr)) > 2000:
+            embed = discord.Embed(title="MySQL Databases", description="Here are the databases that your have on your machine:")
+            embed.add_field(name="Databases: ", value='There are too many characters for your databases to be shown here.')
+            embed.set_footer(text="MySQL")
+            await ctx.reply(embed=embed, mention_author=False)
+        else: 
+            databases = "show databases"
+            self.cursorr.execute(databases)
+            mbed = discord.Embed(
+                title="MySQL Databases",
+                description="Here are the databases that your have on your machine:",
+            )
+            mbed.add_field(name="Databases:", value=", ".join(x for (x,) in self.cursorr) or "No databases")
+            mbed.set_footer(text="MySQL")
+            await ctx.reply(embed=mbed, mention_author=False)
 
     @delete.command(aliases=["database"])
     async def db(self, ctx, database_name):
@@ -111,7 +123,7 @@ class SQL(commands.Cog):
         if database_name in dblist:
             self.cursorr.execute(f"DROP DATABASE {database_name}")
             await ctx.tick()
-            await ctx.reply(f"The database \"{database_name}\" has been deleted.")
+            await ctx.reply(f"The database \"{database_name}\" has been deleted.", mention_author=False)
         else:
-            await ctx.reply("The database could not be deleted because it does not exist.")
+            await ctx.reply("The database could not be deleted because it does not exist.",)
 
