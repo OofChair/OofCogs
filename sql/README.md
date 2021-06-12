@@ -32,6 +32,10 @@ Once you install the SQL cog, you need to add your MySQL credentials.
 
 # SQL Changelog
 
+## v1.0.1
+
+#### Release on main branch, 
+
 ## v1.0.0
 
-#### Beginning commit, interact with
+#### Beginning commit, interact with MySQL
