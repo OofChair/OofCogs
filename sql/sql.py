@@ -44,8 +44,7 @@ class SQL(commands.Cog):
 
 
     async def red_delete_data_for_user(self, *, requester: RequestType, user_id: int) -> None:
-        # TODO: Replace this with the proper end user data removal handling.
-        super().red_delete_data_for_user(requester=requester, user_id=user_id)
+        return
     
     
     @commands.is_owner()
@@ -66,15 +65,20 @@ class SQL(commands.Cog):
 
     @mysql.group()
     async def delete(self, ctx):
-        """Delete database/table"""
+        """Delete database"""
 
     @mysql.command()
     async def create(self, ctx, database_name):
         """Create a database with MySQL"""
         await ctx.trigger_typing()
-        self.cursorr.execute(f"CREATE DATABASE {database_name}")
-        await ctx.tick()
-        await ctx.send(f"{database_name} has been created.")
+        sql_databases = ("show databases")
+        self.cursorr.execute(sql_databases)
+        if database_name in self.cursorr:
+            await ctx.send("This database already exists, please use a different name.")
+        else:
+            self.cursorr.execute(f"CREATE DATABASE {database_name}")
+            await ctx.tick()
+            await ctx.send(f"{database_name} has been created.")
 
     @mysql.command()
     async def list(self, ctx):
