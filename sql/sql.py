@@ -13,10 +13,10 @@ RequestType = Literal["discord_deleted_user", "owner", "user", "user_strict"]
 
 class SQL(commands.Cog):
     """
-    SQL experiment og
+    SQL cog that can be used for interacting with multiple databases.
     """
 
-    
+    __version__ = "1.0.1"
 
     def __init__(self, bot: Red) -> None:
         self.bot = bot
@@ -36,6 +36,13 @@ class SQL(commands.Cog):
     def cog_unload(self):
         self.startup_task.cancel()
     
+    def format_help_for_context(self, ctx):
+        """Thanks Sinbad!"""
+        pre_processed = super().format_help_for_context(ctx)
+        n = "\n" if "\n\n" not in pre_processed else ""
+        return f"{pre_processed}{n}\nCog Version: {self.__version__}"
+
+
     async def red_delete_data_for_user(self, *, requester: RequestType, user_id: int) -> None:
         # TODO: Replace this with the proper end user data removal handling.
         super().red_delete_data_for_user(requester=requester, user_id=user_id)
@@ -46,6 +53,11 @@ class SQL(commands.Cog):
     async def sql(self, ctx):
         """SQL commands"""
         pass
+
+    @sql.command()
+    async def version(self, ctx):
+        """Check what version of the SQL cog you have."""
+        await ctx.reply(f"This cog is on version {self.__version__}.", mention_author=False)
 
     @sql.group()
     async def mysql(self, ctx):
