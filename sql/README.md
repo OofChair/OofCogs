@@ -10,6 +10,7 @@
 sudo apt-get install mysql-client mysql-server
 mysql
 mysql> CREATE USER 'yourusernamehere'@'localhost' IDENTIFIED BY 'yourpasswordhere';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'oee'@'localhost';
 mysql> exit
 ```
 ##### After you finish installing, check [Setup the cog](./README.md#setup-the-cog) to learn how to setup this cog.
@@ -31,6 +32,10 @@ Once you install the SQL cog, you need to add your MySQL credentials.
 ```
 
 # SQL Changelog
+
+## v1.0.4
+
+#### Update directions so all databases can be viewed
 
 ## v1.0.3
 
