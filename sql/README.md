@@ -32,6 +32,10 @@ Once you install the SQL cog, you need to add your MySQL credentials.
 
 # SQL Changelog
 
+## v1.0.3
+
+#### Highlight setup in install_msg
+
 ## v1.0.2
 
 #### Release the cog :D

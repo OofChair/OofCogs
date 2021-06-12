@@ -3,7 +3,7 @@
     "short": "A cog that interacts with different databases.",
     "description": "A cog that interacts with different databases.\nCurrent databases: MySQL\n\nPlanned databases: MongoDB, PostgreSQL",
     "end_user_data_statement": "This cog does not persistently store any data or metadata about users.",
-    "install_msg": "Thank you for installing the SQL cog from OofCogs. This cog requires a little setup, please go to https://github.com/OofChair/OofCogs/blob/master/sql/README.md#installation to read the setup instructions. If you need any help with the setup process or find a bug, please join the support server here: <https://discord.com/invite/3PfU5q22wN>",
+    "install_msg": "Thank you for installing the SQL cog from OofCogs. **This cog requires setup**, please go to <https://github.com/OofChair/OofCogs/blob/master/sql/README.md#installation> to read the setup instructions. If you need any help with the setup process or find a bug, please join the support server here: <https://discord.com/invite/3PfU5q22wN>",
     "author": [
         "OofChair"
     ],

@@ -17,7 +17,7 @@ class SQL(commands.Cog):
     SQL cog that can be used for interacting with multiple databases.
     """
 
-    __version__ = "1.0.2"
+    __version__ = "1.0.3"
 
     def __init__(self, bot: Red) -> None:
         self.bot = bot
