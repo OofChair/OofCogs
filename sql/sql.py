@@ -79,13 +79,13 @@ class SQL(commands.Cog):
         await ctx.trigger_typing()
         sql_databases = "show databases"
         self.cursorr.execute(sql_databases)
-        mydb = ", ".join(x for (x,) in self.cursorr)
-        if database_name in mydb:
-            await ctx.send("The "{database_name}" database already exists, please use a different name.")
+        dblist = ", ".join(x for (x,) in self.cursorr)
+        if database_name in dblist:
+            await ctx.reply(f"The \"{database_name}\" database already exists, please use a different name.", mention_author=False)
         else:
             self.cursorr.execute(f"CREATE DATABASE {database_name}")
             await ctx.tick()
-            await ctx.send(f"{database_name} has been created.")
+            await ctx.reply(f"{database_name} has been created.", mention_author=False)
 
     @mysql.command()
     async def list(self, ctx):
@@ -99,12 +99,19 @@ class SQL(commands.Cog):
         )
         embed.add_field(name="Databases:", value=", ".join(x for (x,) in self.cursorr))
         embed.set_footer(text="MySQL")
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed, mention_author=False)
 
     @delete.command(aliases=["database"])
     async def db(self, ctx, database_name):
         """Remove database"""
         await ctx.trigger_typing()
-        self.cursorr.execute(f"DROP DATABASE IF EXISTS {database_name}")
-        await ctx.tick()
-        await ctx.send("If the database exists, it has been removed.")
+        sql_databases = "show databases"
+        self.cursorr.execute(sql_databases)
+        dblist = ", ".join(x for (x,) in self.cursorr)
+        if database_name in dblist:
+            self.cursorr.execute(f"DROP DATABASE {database_name}")
+            await ctx.tick()
+            await ctx.reply(f"The database \"{database_name}\" has been deleted.")
+        else:
+            await ctx.reply("The database could not be deleted because it does not exist.")
+
