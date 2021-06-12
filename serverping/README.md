@@ -1,4 +1,4 @@
-# RedditPic Changelog
+# ServerPing Changelog
 
 ## v1.0.0
 

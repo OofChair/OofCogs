@@ -29,7 +29,7 @@ class ServerPing(commands.Cog):
     ) -> None:
         """Nothing to delete"""
         return
-    
+
     def setup_string(self, item: str) -> Tuple[str, bool]:
         """Set a string as a url"""
         changed = False
@@ -47,7 +47,9 @@ class ServerPing(commands.Cog):
         server, changed = self.setup_string(server)
         msg = None
         if changed:
-            msg = await ctx.send(content=f"I have edited your address to be pingable... (**{server}**)")
+            msg = await ctx.send(
+                content=f"I have edited your address to be pingable... (**{server}**)"
+            )
         await ctx.trigger_typing()
         ping = Ping(server)
         embed = discord.Embed(title=f"Pinged {server}!", color=await ctx.embed_colour())

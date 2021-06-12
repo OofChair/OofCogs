@@ -31,7 +31,6 @@ class RedditPic(commands.Cog):
         #        )
         self.session = aiohttp.ClientSession()
 
-
     # Kill session on cog unload
     def cog_unload(self):
         self.bot.loop.run_until_complete(self.session.close())
@@ -102,15 +101,17 @@ class RedditPic(commands.Cog):
     async def memeversion(self, ctx):
         """Find cog version"""
         await ctx.send(f"This cog is on version {self.__version__}.")
-    
+
     async def error_embed(self, ctx: commands.Context):
         embed = discord.Embed(
-            title="Oops!", description="**That didn't work!**", color=(await ctx.embed_colour())
+            title="Oops!",
+            description="**That didn't work!**",
+            color=(await ctx.embed_colour()),
         )
         embed.add_field(
-                    name="The subreddit you are trying to access is not available!",
-                    value="Some reasons this might be happening: \n - The subreddit is NSFW\n - The subreddit doesn't have any pictures. \n - The subreddit is blacklisted.",
-                    inline=True,
+            name="The subreddit you are trying to access is not available!",
+            value="Some reasons this might be happening: \n - The subreddit is NSFW\n - The subreddit doesn't have any pictures. \n - The subreddit is blacklisted.",
+            inline=True,
         )
         embed.add_field(
             name="If your problem does not match anything above,",
