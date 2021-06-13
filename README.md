@@ -15,7 +15,7 @@ Cog Function
 
 # Installation
 ### Recommended - Built-in Downloader
-```
+```ini
 # Load the Downloader cog (if it isn't already)
 
 [p]load downloader
