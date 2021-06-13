@@ -9,6 +9,8 @@ assignees: ''
 
 What cog is this for?
 [] RedditPic
+[] ServerPing
+[] SQL
 
 **What would you like to be added to the cog(s)?
 
