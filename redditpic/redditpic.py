@@ -14,7 +14,7 @@ class RedditPic(commands.Cog):
 
     # Version
     __version__ = "1.1.0"
-    
+
     def format_help_for_context(self, ctx):
         """Thanks Sinbad!"""
         pre_processed = super().format_help_for_context(ctx)
@@ -48,8 +48,8 @@ class RedditPic(commands.Cog):
         """Get a random meme from r/memes"""
         await ctx.trigger_typing()
         async with self.session.get(
-                f"https://imageapi.fionn.live/reddit/memes"
-            ) as request:
+            f"https://imageapi.fionn.live/reddit/memes"
+        ) as request:
             try:
                 response = await request.json()
             except aiohttp.ContentTypeError:
@@ -75,8 +75,8 @@ class RedditPic(commands.Cog):
         """Get a random picture from a subreddit \n\n If an error occurs, please wait a few seconds, then try again."""
         await ctx.trigger_typing()
         async with self.session.get(
-                f"https://imageapi.fionn.live/reddit/{subreddit}"
-            ) as request:
+            f"https://imageapi.fionn.live/reddit/{subreddit}"
+        ) as request:
             try:
                 response = await request.json()
             except aiohttp.ContentTypeError:

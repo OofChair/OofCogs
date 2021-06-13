@@ -36,7 +36,9 @@ class SQL(commands.Cog):
             database="",
         )
         self.cursorr = self.sqql.cursor()
-        await self.bot.loop.run_in_executor(None, self.cursorr.execute, "SET @@wait_timeout = 31536000")
+        await self.bot.loop.run_in_executor(
+            None, self.cursorr.execute, "SET @@wait_timeout = 31536000"
+        )
 
     def cog_unload(self):
         self.startup_task.cancel()
@@ -85,9 +87,14 @@ class SQL(commands.Cog):
             await ctx.reply("This name is too long, please choose a shorter name.")
             return
         if database_name in dblist:
-            await ctx.reply(f"The \"{database_name}\" database already exists, please use a different name.", mention_author=False)
+            await ctx.reply(
+                f'The "{database_name}" database already exists, please use a different name.',
+                mention_author=False,
+            )
         else:
-            await self.bot.loop.run_in_executor(None, self.cursorr.execute, f"CREATE DATABASE {database_name}")
+            await self.bot.loop.run_in_executor(
+                None, self.cursorr.execute, f"CREATE DATABASE {database_name}"
+            )
             await ctx.tick()
             await ctx.reply(f"{database_name} has been created.", mention_author=False)
 
@@ -98,18 +105,27 @@ class SQL(commands.Cog):
         databases = "show databases"
         await self.bot.loop.run_in_executor(None, self.cursorr.execute, databases)
         if len(", ".join(x for (x,) in self.cursorr)) > 2000:
-            embed = discord.Embed(title="MySQL Databases", description="Here are the databases that your have on your machine:")
-            embed.add_field(name="Databases: ", value='There are too many characters for your databases to be shown here.')
+            embed = discord.Embed(
+                title="MySQL Databases",
+                description="Here are the databases that your have on your machine:",
+            )
+            embed.add_field(
+                name="Databases: ",
+                value="There are too many characters for your databases to be shown here.",
+            )
             embed.set_footer(text="MySQL")
             await ctx.reply(embed=embed, mention_author=False)
-        else: 
+        else:
             databases = "show databases"
             await self.bot.loop.run_in_executor(None, self.cursorr.execute, databases)
             mbed = discord.Embed(
                 title="MySQL Databases",
                 description="Here are the databases that your have on your machine:",
             )
-            mbed.add_field(name="Databases:", value=", ".join(x for (x,) in self.cursorr) or "No databases")
+            mbed.add_field(
+                name="Databases:",
+                value=", ".join(x for (x,) in self.cursorr) or "No databases",
+            )
             mbed.set_footer(text="MySQL")
             await ctx.reply(embed=mbed, mention_author=False)
 
@@ -121,9 +137,15 @@ class SQL(commands.Cog):
         await self.bot.loop.run_in_executor(None, self.cursorr.execute, sql_databases)
         dblist = ", ".join(x for (x,) in self.cursorr)
         if database_name in dblist:
-            await self.bot.loop.run_in_executor(None, self.cursorr.execute, f"DROP DATABASE {database_name}")
+            await self.bot.loop.run_in_executor(
+                None, self.cursorr.execute, f"DROP DATABASE {database_name}"
+            )
             await ctx.tick()
-            await ctx.reply(f"The database \"{database_name}\" has been deleted.", mention_author=False)
+            await ctx.reply(
+                f'The database "{database_name}" has been deleted.',
+                mention_author=False,
+            )
         else:
-            await ctx.reply("The database could not be deleted because it does not exist.",)
-
+            await ctx.reply(
+                "The database could not be deleted because it does not exist.",
+            )
