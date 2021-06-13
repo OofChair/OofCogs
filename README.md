@@ -50,5 +50,6 @@ For support, please don't open an issue.
 # Credits
 
 Huge thanks to all the helpful people in #coding on the [discord support server](https://discord.gg/red)<br>
-Great help goes out to [epic guy#0715](https://github.com/npc203) for helping me with the Some Random API cog (Now called Fun cog, on dev branch)
-Thanks to [@kreusada](https://github.com/kreusada), [@Just-Jojo](https://github.com/Just-Jojo), [@Andeeeee](https://github.com/Andeeeee) and [@Otriux](https://github.com/Otriux) for help with the RedditPic cog.
+Great help goes out to [epic guy#0715](https://github.com/npc203) for helping me with the Some Random API cog (Now called Fun cog, on dev branch)<br>
+Thanks to [@kreusada](https://github.com/kreusada), [@Just-Jojo](https://github.com/Just-Jojo), [@Andeeeee](https://github.com/Andeeeee) and [@Otriux](https://github.com/Otriux) for help with the RedditPic cog. <br>
+Thanks to [@Just-Jojo](https://github.com/Just-Jojo) for helping out on the SQL cog.
