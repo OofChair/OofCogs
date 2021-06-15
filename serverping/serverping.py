@@ -8,7 +8,7 @@ from redbot.core.config import Config
 
 RequestType = Literal["discord_deleted_user", "owner", "user", "user_strict"]
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 
 class ServerPing(commands.Cog):
@@ -51,7 +51,7 @@ class ServerPing(commands.Cog):
                 content=f"I have edited your address to be pingable... (**{server}**)"
             )
         await ctx.trigger_typing()
-        ping = Ping(server)
+        ping = await self.bot.loop.run_in_executor(None, Ping, server)
         embed = discord.Embed(title=f"Pinged {server}!", color=await ctx.embed_colour())
         embed.add_field(
             name=f":green_circle: **Server returned {ping.avg} ms!**",
