@@ -29,15 +29,14 @@ class InviteTracker(commands.Cog):
             "enabled": False,
             "channel": [],
             "joinenabled": True,
-            "leaveenabled": True
+            "leaveenabled": True,
         }
         self.config.register_guild(**default_guild)
         self.invites = {}
         bot.loop.create_task(self.load())
         last = ""
-        
-    __version__ = "1.0.0"
 
+    __version__ = "1.0.0"
 
     def format_help_for_context(self, ctx):
         """Thanks Sinbad!"""
@@ -45,8 +44,9 @@ class InviteTracker(commands.Cog):
         n = "\n" if "\n\n" not in pre_processed else ""
         return f"{pre_processed}{n}\nCog Version: {self.__version__}"
 
-
-    async def red_delete_data_for_user(self, *, requester: RequestType, user_id: int) -> None:
+    async def red_delete_data_for_user(
+        self, *, requester: RequestType, user_id: int
+    ) -> None:
         # TODO: Replace this with the proper end user data removal handling.
         super().red_delete_data_for_user(requester=requester, user_id=user_id)
 
@@ -61,14 +61,13 @@ class InviteTracker(commands.Cog):
         for inv in inv_list:
             if inv.code == code:
                 return inv
-    
 
     @commands.group(aliases=["invset"])
     @commands.admin()
     @commands.bot_in_a_guild()
     async def invitetrackerset(self, ctx):
         """Invite tracker settings
-        
+
         Commands:
         `[p]invset channel` - Sets the invite logging channel
         `[p]invset enable` - Enable invite logging in your server
@@ -77,11 +76,10 @@ class InviteTracker(commands.Cog):
         """
         pass
 
-
     @invitetrackerset.command()
     async def channel(self, ctx, channel: discord.TextChannel):
         """Set the invite tracker channel
-        
+
         Arguments:
         `channel`: Select the channel for the invite logging to be sent to
         """
@@ -93,23 +91,23 @@ class InviteTracker(commands.Cog):
     @invitetrackerset.command()
     async def enable(self, ctx, yes_or_no: bool):
         """Enable/disable invite logging
-        
+
         Arguments:
-        `yes_or_no`: Enable/disable invite logging with yes or no, true or false, etc. 
+        `yes_or_no`: Enable/disable invite logging with yes or no, true or false, etc.
         """
         await ctx.trigger_typing()
         await self.config.guild(ctx.guild).enabled.set(yes_or_no)
-        if yes_or_no == True: 
+        if yes_or_no == True:
             await ctx.send("Invite tracking has been turned on for this guild.")
         else:
-            await ctx.send("Invite tracking has been turned off for this guild.")  
+            await ctx.send("Invite tracking has been turned off for this guild.")
 
     @invitetrackerset.command()
     async def leaveenable(self, ctx, yes_or_no: bool):
         """Enable/disable leave messages
-        
+
         Arguments:
-        `yes_or_no`: Enable/disable leave logging with yes or no, true or false, etc. 
+        `yes_or_no`: Enable/disable leave logging with yes or no, true or false, etc.
         """
         await ctx.trigger_typing()
         await self.config.guild(ctx.guild).leaveenabled.set(yes_or_no)
@@ -121,9 +119,9 @@ class InviteTracker(commands.Cog):
     @invitetrackerset.command()
     async def joinenable(self, ctx, yes_or_no: bool):
         """Enable/disable join messages
-        
+
         Arguments:
-        `yes_or_no`: Enable/disable join invite logging with yes or no, true or false, etc. 
+        `yes_or_no`: Enable/disable join invite logging with yes or no, true or false, etc.
         """
         await ctx.trigger_typing()
         await self.config.guild(ctx.guild).joinenabled.set(yes_or_no)
@@ -131,6 +129,7 @@ class InviteTracker(commands.Cog):
             await ctx.send("Join invite tracking has been turned on for this guild.")
         else:
             await ctx.send("Join invite tracking has been turned off for this guild.")
+
     # Invite tracking
 
     @commands.Cog.listener()
@@ -138,7 +137,9 @@ class InviteTracker(commands.Cog):
         """On member listener for new users"""
         logs_channel = await self.config.guild(member.guild).channel()
         logs = self.bot.get_channel(logs_channel)
-        embed = discord.Embed(description="Just joined the server", color=0x03d692, title=" ")
+        embed = discord.Embed(
+            description="Just joined the server", color=0x03D692, title=" "
+        )
         embed.set_author(name=str(member), icon_url=member.avatar_url)
         embed.set_footer(text="ID: " + str(member.id))
         try:
@@ -147,8 +148,11 @@ class InviteTracker(commands.Cog):
             self.invites[member.guild.id] = invs_after
             for invite in invs_before:
                 if invite.uses < self.find_invite_by_code(invs_after, invite.code).uses:
-                    embed.add_field(name="Used invite",
-                                  value=f"Inviter: {invite.inviter.mention} (`{invite.inviter}` | `{str(invite.inviter.id)}`)\nCode: `{invite.code}`\nUses: ` {str(invite.uses)} `", inline=False)
+                    embed.add_field(
+                        name="Used invite",
+                        value=f"Inviter: {invite.inviter.mention} (`{invite.inviter}` | `{str(invite.inviter.id)}`)\nCode: `{invite.code}`\nUses: ` {str(invite.uses)} `",
+                        inline=False,
+                    )
         except:
             pass
         if self.config.guild(member.guild).enabled == False:
@@ -164,7 +168,7 @@ class InviteTracker(commands.Cog):
         """On member listener for users leaving"""
         logs_channel = await self.config.guild(member.guild).channel()
         logs = self.bot.get_channel(int(logs_channel))
-        eme = Embed(description="Just left the server", color=0xff0000, title=" ")
+        eme = Embed(description="Just left the server", color=0xFF0000, title=" ")
         eme.set_author(name=str(member), icon_url=member.avatar_url)
         eme.set_footer(text="ID: " + str(member.id))
         eme.timestamp = member.joined_at
@@ -174,8 +178,11 @@ class InviteTracker(commands.Cog):
             self.invites[member.guild.id] = invs_after
             for invite in invs_before:
                 if invite.uses > self.find_invite_by_code(invs_after, invite.code).uses:
-                    eme.add_field(name="Used invite",
-                                  value=f"Inviter: {invite.inviter.mention} (`{invite.inviter}` | `{str(invite.inviter.id)}`)\nCode: `{invite.code}`\nUses: ` {str(invite.uses)} `", inline=False)
+                    eme.add_field(
+                        name="Used invite",
+                        value=f"Inviter: {invite.inviter.mention} (`{invite.inviter}` | `{str(invite.inviter.id)}`)\nCode: `{invite.code}`\nUses: ` {str(invite.uses)} `",
+                        inline=False,
+                    )
         except:
             pass
         if self.config.guild(member.guild).enabled == False:
@@ -185,4 +192,3 @@ class InviteTracker(commands.Cog):
                 return
             else:
                 await logs.send(embed=eme)
-    
