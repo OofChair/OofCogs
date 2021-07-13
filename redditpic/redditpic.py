@@ -48,7 +48,7 @@ class RedditPic(commands.Cog):
         """Get a random meme from r/memes"""
         await ctx.trigger_typing()
         async with self.session.get(
-            f"https://imageapi.fionn.live/reddit/memes"
+            "https://imageapi.fionn.live/reddit/memes"
         ) as request:
             try:
                 response = await request.json()

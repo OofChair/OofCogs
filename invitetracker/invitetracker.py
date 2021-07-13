@@ -4,11 +4,6 @@ import discord
 from redbot.core import commands
 from redbot.core.bot import Red
 from redbot.core.config import Config
-import discord
-import json
-import typing
-import datetime
-from discord import Embed
 
 RequestType = Literal["discord_deleted_user", "owner", "user", "user_strict"]
 
@@ -85,7 +80,6 @@ class InviteTracker(commands.Cog):
         `channel`: Select the channel for the invite logging to be sent to
         """
         async with ctx.typing():
-            logs_channel = await self.config.guild(ctx.guild).channel()
             await self.config.guild(ctx.guild).channel.set(channel.id)
             await ctx.send(f"The log channel has been set to {channel.mention}")
 
@@ -98,7 +92,7 @@ class InviteTracker(commands.Cog):
         """
         async with ctx.typing():
             await self.config.guild(ctx.guild).enabled.set(yes_or_no)
-            if yes_or_no == True:
+            if yes_or_no is True:
                 await ctx.send("Invite tracking has been turned on for this guild.")
             else:
                 await ctx.send("Invite tracking has been turned off for this guild.")
@@ -112,10 +106,14 @@ class InviteTracker(commands.Cog):
         """
         async with ctx.typing():
             await self.config.guild(ctx.guild).leaveenabled.set(yes_or_no)
-            if yes_or_no == True:
-                await ctx.send("Leave invite tracking has been turned on for this guild.")
+            if yes_or_no is True:
+                await ctx.send(
+                    "Leave invite tracking has been turned on for this guild."
+                )
             else:
-                await ctx.send("Leave invite tracking has been turned off for this guild.")
+                await ctx.send(
+                    "Leave invite tracking has been turned off for this guild."
+                )
 
     @invitetrackerset.command()
     async def joinenable(self, ctx, yes_or_no: bool):
@@ -126,10 +124,14 @@ class InviteTracker(commands.Cog):
         """
         async with ctx.typing():
             await self.config.guild(ctx.guild).joinenabled.set(yes_or_no)
-            if yes_or_no == True:
-                await ctx.send("Join invite tracking has been turned on for this guild.")
+            if yes_or_no is True:
+                await ctx.send(
+                    "Join invite tracking has been turned on for this guild."
+                )
             else:
-                await ctx.send("Join invite tracking has been turned off for this guild.")
+                await ctx.send(
+                    "Join invite tracking has been turned off for this guild."
+                )
 
     # Invite tracking
 
@@ -154,9 +156,12 @@ class InviteTracker(commands.Cog):
                         value=f"Inviter: {invite.inviter.mention} (`{invite.inviter}` | `{str(invite.inviter.id)}`)\nCode: `{invite.code}`\nUses: ` {str(invite.uses)} `",
                         inline=False,
                     )
-        except:
-            pass
-        if self.config.guild(member.guild).enabled and self.config.guild(member.guild).joinenabled:
+        except Exception as e:
+            print(str(e))
+        if (
+            self.config.guild(member.guild).enabled
+            and self.config.guild(member.guild).joinenabled
+        ):
             await logs.send(embed=embed)
 
     @commands.Cog.listener()
@@ -164,7 +169,9 @@ class InviteTracker(commands.Cog):
         """On member listener for users leaving"""
         logs_channel = await self.config.guild(member.guild).channel()
         logs = self.bot.get_channel(int(logs_channel))
-        embed = discord.Embed(description="Just left the server", color=0xFF0000, title=" ")
+        embed = discord.Embed(
+            description="Just left the server", color=0xFF0000, title=" "
+        )
         embed.set_author(name=str(member), icon_url=member.avatar_url)
         embed.set_footer(text="ID: " + str(member.id))
         embed.timestamp = member.joined_at
@@ -181,5 +188,8 @@ class InviteTracker(commands.Cog):
                     )
         except Exception as e:
             print(str(e))
-        if self.config.guild(member.guild).enabled and self.config.guild(member.guild).joinenabled:
+        if (
+            self.config.guild(member.guild).enabled
+            and self.config.guild(member.guild).joinenabled
+        ):
             await logs.send(embed=embed)
