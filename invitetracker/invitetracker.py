@@ -84,7 +84,7 @@ class InviteTracker(commands.Cog):
         Arguments:
         `channel`: Select the channel for the invite logging to be sent to
         """
-        async with ctx.trigger_typing():
+        async with ctx.typing():
             logs_channel = await self.config.guild(ctx.guild).channel()
             await self.config.guild(ctx.guild).channel.set(channel.id)
             await ctx.send(f"The log channel has been set to {channel.mention}")
@@ -96,7 +96,7 @@ class InviteTracker(commands.Cog):
         Arguments:
         `yes_or_no`: Enable/disable invite logging with yes or no, true or false, etc.
         """
-        async with ctx.trigger_typing():
+        async with ctx.typing():
             await self.config.guild(ctx.guild).enabled.set(yes_or_no)
             if yes_or_no == True:
                 await ctx.send("Invite tracking has been turned on for this guild.")
@@ -110,7 +110,7 @@ class InviteTracker(commands.Cog):
         Arguments:
         `yes_or_no`: Enable/disable leave logging with yes or no, true or false, etc.
         """
-        async with ctx.trigger_typing():
+        async with ctx.typing():
             await self.config.guild(ctx.guild).leaveenabled.set(yes_or_no)
             if yes_or_no == True:
                 await ctx.send("Leave invite tracking has been turned on for this guild.")
@@ -124,7 +124,7 @@ class InviteTracker(commands.Cog):
         Arguments:
         `yes_or_no`: Enable/disable join invite logging with yes or no, true or false, etc.
         """
-        async with ctx.trigger_typing():
+        async with ctx.typing():
             await self.config.guild(ctx.guild).joinenabled.set(yes_or_no)
             if yes_or_no == True:
                 await ctx.send("Join invite tracking has been turned on for this guild.")
