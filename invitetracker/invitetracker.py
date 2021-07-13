@@ -53,6 +53,8 @@ class InviteTracker(commands.Cog):
         for guild in self.bot.guilds:
             try:
                 self.invites[guild.id] = await guild.invites()
+            except discord.Forbidden:
+                pass
             except Exception as e:
                 print(e, flush=True)
 
@@ -132,7 +134,7 @@ class InviteTracker(commands.Cog):
     # Invite tracking
 
     @commands.Cog.listener()
-    async def on_member_join(self, member: discord.Member):
+    async def on_member_join(self, member: discord.Member) -> None:
         """On member listener for new users"""
         logs_channel = await self.config.guild(member.guild).channel()
         logs = self.bot.get_channel(logs_channel)
@@ -158,11 +160,11 @@ class InviteTracker(commands.Cog):
             await logs.send(embed=embed)
 
     @commands.Cog.listener()
-    async def on_member_remove(self, member: discord.Member):
+    async def on_member_remove(self, member: discord.Member) -> None:
         """On member listener for users leaving"""
         logs_channel = await self.config.guild(member.guild).channel()
         logs = self.bot.get_channel(int(logs_channel))
-        embed = Embed(description="Just left the server", color=0xFF0000, title=" ")
+        embed = discord.Embed(description="Just left the server", color=0xFF0000, title=" ")
         embed.set_author(name=str(member), icon_url=member.avatar_url)
         embed.set_footer(text="ID: " + str(member.id))
         embed.timestamp = member.joined_at
