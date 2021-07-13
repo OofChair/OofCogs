@@ -1,0 +1,25 @@
+{
+    "name": "InviteTracker",
+    "short": "An invite tracker cog for Red.",
+    "description": "An invite tracker cog for Red, converted from discord.py to work with Red",
+    "end_user_data_statement": "This cog does not persistently store any data or metadata about users.",
+    "install_msg": "Thank you for installing the InviteTracker cog from OofCogs\n**This cog has been converted to Red with permission from <https://github.com/GregTCLTK/Discord-Invite-Tracker>. Proof of permission can be provided if needed.**\n\nThis cog needs setup which you can find in the `[p]invset` commands. ",
+    "author": [
+        "OofChair",
+        "GregTCLTK (Skidder#8515)"
+    ],
+    "required_cogs": {},
+    "requirements": [],
+    "tags": [
+        "invite",
+        "invitetracker",
+        "oofcogs",
+        "invites",
+        "track",
+        "tracker"
+    ],
+    "min_bot_version": "3.3.10",
+    "hidden": false,
+    "disabled": false,
+    "type": "COG"
+}
