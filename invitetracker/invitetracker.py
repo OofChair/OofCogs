@@ -134,6 +134,22 @@ class InviteTracker(commands.Cog):
                     "Join invite tracking has been turned off for this guild."
                 )
 
+    @commands.command(aliases=["userinvites"])
+    async def invitesforuser(self,ctx, user: discord.Member = None):
+        """See how many times a user's invites have been used"""
+        async with ctx.typing():
+            if user == None:
+                user = ctx.author
+            else:
+                user = user
+            total_invites = 0
+            for i in await ctx.guild.invites():
+                if i.inviter == user:
+                    total_invites += i.uses
+            embed = discord.Embed(title="📫 Invite counter")
+            embed.add_field(name=f"​​​​​Invites for {user.name}#{user.discriminator}", value=f"{total_invites} times!")
+            await ctx.send(embed=embed)
+
     # Invite tracking
 
     @commands.Cog.listener()
