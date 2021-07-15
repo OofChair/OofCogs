@@ -4,6 +4,7 @@ import discord
 from redbot.core import commands
 from redbot.core.bot import Red
 from redbot.core.config import Config
+from collections import defaultdict
 
 RequestType = Literal["discord_deleted_user", "owner", "user", "user_strict"]
 
@@ -27,10 +28,10 @@ class InviteTracker(commands.Cog):
             "leaveenabled": True,
         }
         self.config.register_guild(**default_guild)
-        self.invites = {}
+        self.invites = defaultdict(list)
         bot.loop.create_task(self.load())
 
-    __version__ = "1.0.0"
+    __version__ = "1.1.0"
 
     def format_help_for_context(self, ctx):
         """Thanks Sinbad!"""
@@ -132,6 +133,25 @@ class InviteTracker(commands.Cog):
                 await ctx.send(
                     "Join invite tracking has been turned off for this guild."
                 )
+
+    @commands.command(aliases=["userinvites"])
+    async def invitesforuser(self, ctx, user: discord.Member = None):
+        """See how many times a user's invites have been used"""
+        async with ctx.typing():
+            if user == None:
+                user = ctx.author
+            else:
+                user = user
+            total_invites = 0
+            for i in await ctx.guild.invites():
+                if i.inviter == user:
+                    total_invites += i.uses
+            embed = discord.Embed(title="📫 Invite counter")
+            embed.add_field(
+                name=f"​​​​​Invites for {user.name}#{user.discriminator}",
+                value=f"{total_invites} times!",
+            )
+            await ctx.send(embed=embed)
 
     # Invite tracking
 
