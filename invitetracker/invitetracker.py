@@ -4,6 +4,7 @@ import discord
 from redbot.core import commands
 from redbot.core.bot import Red
 from redbot.core.config import Config
+from collections import defaultdict
 
 RequestType = Literal["discord_deleted_user", "owner", "user", "user_strict"]
 
@@ -27,7 +28,7 @@ class InviteTracker(commands.Cog):
             "leaveenabled": True,
         }
         self.config.register_guild(**default_guild)
-        self.invites = {}
+        self.invites = defaultdict(list)
         bot.loop.create_task(self.load())
 
     __version__ = "1.1.0"
@@ -134,11 +135,6 @@ class InviteTracker(commands.Cog):
                 )
 
     # Invite tracking
-
-    @commands.Cog.listener()
-    async def on_guild_update(self,  before, after):
-        if await before.guild.invites() != await after.guild.invites():
-            self.invites[guild.id] = await after.guild.invites()
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member) -> None:
