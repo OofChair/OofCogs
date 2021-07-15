@@ -30,7 +30,7 @@ class InviteTracker(commands.Cog):
         self.invites = {}
         bot.loop.create_task(self.load())
 
-    __version__ = "1.0.0"
+    __version__ = "1.1.0"
 
     def format_help_for_context(self, ctx):
         """Thanks Sinbad!"""
@@ -134,6 +134,11 @@ class InviteTracker(commands.Cog):
                 )
 
     # Invite tracking
+
+    @commands.Cog.listener()
+    async def on_guild_update(self,  before, after):
+        if before.guild.invites() != after.guild.invites():
+            self.invites[guild.id] = await after.guild.invites()
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member) -> None:
