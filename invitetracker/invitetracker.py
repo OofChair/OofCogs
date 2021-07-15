@@ -137,7 +137,7 @@ class InviteTracker(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_update(self,  before, after):
-        if before.guild.invites() != after.guild.invites():
+        if await before.guild.invites() != await after.guild.invites():
             self.invites[guild.id] = await after.guild.invites()
 
     @commands.Cog.listener()
