@@ -93,7 +93,7 @@ class InviteTracker(commands.Cog):
         """
         async with ctx.typing():
             await self.config.guild(ctx.guild).enabled.set(yes_or_no)
-            if yes_or_no is True:
+            if yes_or_no:
                 await ctx.send("Invite tracking has been turned on for this guild.")
             else:
                 await ctx.send("Invite tracking has been turned off for this guild.")
@@ -107,7 +107,7 @@ class InviteTracker(commands.Cog):
         """
         async with ctx.typing():
             await self.config.guild(ctx.guild).leaveenabled.set(yes_or_no)
-            if yes_or_no is True:
+            if yes_or_no:
                 await ctx.send(
                     "Leave invite tracking has been turned on for this guild."
                 )
@@ -138,10 +138,8 @@ class InviteTracker(commands.Cog):
     async def invitesforuser(self, ctx, user: discord.Member = None):
         """See how many times a user's invites have been used"""
         async with ctx.typing():
-            if user == None:
+            if user is None:
                 user = ctx.author
-            else:
-                user = user
             total_invites = 0
             for i in await ctx.guild.invites():
                 if i.inviter == user:
@@ -159,7 +157,9 @@ class InviteTracker(commands.Cog):
     async def on_member_join(self, member: discord.Member) -> None:
         """On member listener for new users"""
         logs_channel = await self.config.guild(member.guild).channel()
-        logs = self.bot.get_channel(logs_channel)
+        logs = member.guild.get_channel(logs_channel)
+        if not logs:
+            return
         embed = discord.Embed(
             description="Just joined the server", color=0x03D692, title=" "
         )
@@ -188,7 +188,9 @@ class InviteTracker(commands.Cog):
     async def on_member_remove(self, member: discord.Member) -> None:
         """On member listener for users leaving"""
         logs_channel = await self.config.guild(member.guild).channel()
-        logs = self.bot.get_channel(int(logs_channel))
+        logs = member.guild.get_channel(logs_channel)
+        if not logs:
+            return
         embed = discord.Embed(
             description="Just left the server", color=0xFF0000, title=" "
         )
