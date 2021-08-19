@@ -23,7 +23,7 @@ class InviteTracker(commands.Cog):
         )
         default_guild = {
             "enabled": False,
-            "channel": [],
+            "channel": None,
             "joinenabled": True,
             "leaveenabled": True,
         }
@@ -31,7 +31,7 @@ class InviteTracker(commands.Cog):
         self.invites = defaultdict(list)
         bot.loop.create_task(self.load())
 
-    __version__ = "1.1.0"
+    __version__ = "1.2.0"
 
     def format_help_for_context(self, ctx):
         """Thanks Sinbad!"""
