@@ -1,0 +1,19 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Cog-Creators/Red-DiscordBot/V3/develop/schema/red_cog.schema.json",
+    "author": [
+        "Predeactor",
+	"OofChair"
+    ],
+    "description": "Send your image and shorten your URL with your own subdomain.",
+    "short": "Shorten your link and send your image through a link.",
+    "install_msg": "Thank you for installing the SXCU cog from OofCogs. **This cog was created by <https://github.com/Predeactor> but I am now maintaining it.** \n\nTo get started with the cog, go to https://sxcu.net and get a URL, then run `[p]set api sxcu url,[your.url.here]`.",
+    "tags": [
+        "utility",
+        "upload",
+        "tools",
+        "dev",
+        "shorten",
+        "link",
+        "image"
+    ]
+}
