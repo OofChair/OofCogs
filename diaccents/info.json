@@ -1,0 +1,23 @@
+{
+    "name": "Diaccents",
+    "short": "Diaccents = Diacritic + accents",
+    "description": "DCL",
+    "end_user_data_statement": "ok",
+    "install_msg": "Yes",
+    "author": [
+        "OofChair",
+        ""
+    ],
+    "required_cogs": {},
+    "requirements": [],
+    "tags": [
+        "diacritic",
+        "accent",
+        "oofcogs",
+        "dcl"
+    ],
+    "min_bot_version": "3.3.10",
+    "hidden": false,
+    "disabled": false,
+    "type": "COG"
+}
