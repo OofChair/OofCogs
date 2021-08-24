@@ -12,7 +12,7 @@ from .errors import SubNeedToken, SubWrongToken, UnallowedFileType
 class SXCU(commands.Cog):
 
     __author__ = ["Predeactor"]
-    __version__ = "Beta 0.4"
+    __version__ = "0.5.0"
 
     def __init__(self, bot):
         super().__init__()
