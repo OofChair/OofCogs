@@ -54,7 +54,9 @@ class SXCU(commands.Cog):
             await ctx.send(error)
             return
         except (SubWrongToken, SubNeedToken) as error:
-            await ctx.send("I was unable to send your file: `{error}`".format(error=error))
+            await ctx.send(
+                "I was unable to send your file: `{error}`".format(error=error)
+            )
             ctx.command.reset_cooldown(ctx)
             return
         except UnallowedFileType as error:
@@ -149,13 +151,20 @@ class SXCU(commands.Cog):
         """Return a text and maybe an embed with the link(s).
 
         Giving the deletion_url argument will add the URL to the embed and raw message."""
-        embed = discord.Embed(title="Your link is available! 🎉", color=await ctx.embed_color())
-        if ctx.channel.permissions_for(ctx.me).embed_links and await ctx.embed_requested():
+        embed = discord.Embed(
+            title="Your link is available! 🎉", color=await ctx.embed_color()
+        )
+        if (
+            ctx.channel.permissions_for(ctx.me).embed_links
+            and await ctx.embed_requested()
+        ):
             content = "URL: {url}".format(url=url_to_use)
             embed.add_field(
                 name="Here is your shareable URL!",
                 value=(
-                    "Get access to your content [by clicking on me]({url})!".format(url=url_to_use)
+                    "Get access to your content [by clicking on me]({url})!".format(
+                        url=url_to_use
+                    )
                 ),
             )
             if deletion_url:
@@ -215,7 +224,9 @@ class SXCU(commands.Cog):
                 if status_code == 415:
                     raise UnallowedFileType()
                 if status_code != 200:
-                    raise RuntimeError("The server returned an unknow error. Try again later.")
+                    raise RuntimeError(
+                        "The server returned an unknow error. Try again later."
+                    )
                 result: dict = await response.json()
         return [result["url"], result["del_url"], result["thumb"]]
 

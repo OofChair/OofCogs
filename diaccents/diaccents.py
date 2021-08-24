@@ -10,8 +10,6 @@ from redbot.core.config import Config
 RequestType = Literal["discord_deleted_user", "owner", "user", "user_strict"]
 
 
-
-
 class Diaccents(commands.Cog):
     """
     Diaccents = Diacritic + accents
@@ -34,11 +32,15 @@ class Diaccents(commands.Cog):
             force_registration=True,
         )
 
-    async def red_delete_data_for_user(self, *, requester: RequestType, user_id: int) -> None:
+    async def red_delete_data_for_user(
+        self, *, requester: RequestType, user_id: int
+    ) -> None:
         # TODO: Replace this with the proper end user data removal handling.
         super().red_delete_data_for_user(requester=requester, user_id=user_id)
 
-    @commands.group(name="diaccents", aliases=["diac", "diacritic", "accent"], autohelp=True)
+    @commands.group(
+        name="diaccents", aliases=["diac", "diacritic", "accent"], autohelp=True
+    )
     async def diaccents(self, ctx: commands.Context) -> None:
         """
         Diaccents = Diacritic + accents
@@ -53,7 +55,9 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.acute(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
 
@@ -65,7 +69,9 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.breve(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
 
@@ -77,7 +83,9 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.caron(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
 
@@ -89,7 +97,9 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.cedilla(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
 
@@ -101,10 +111,12 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.circumflex(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
-        
+
     @diaccents.command(name="diaresis")
     async def diaccents_diaresis(self, ctx: commands.Context, *, letter: str) -> None:
         """
@@ -113,22 +125,27 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.diaresis(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
 
     @diaccents.command(name="diamac")
-    async def diaccents_diaresis_and_macron(self, ctx: commands.Context, *, letter: str) -> None:
+    async def diaccents_diaresis_and_macron(
+        self, ctx: commands.Context, *, letter: str
+    ) -> None:
         """
         Get a diaresis + macron diacritic for a letter
         """
         try:
             accent = dcl.diaresis_and_macron(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
-    
 
     @diaccents.command(name="grave")
     async def diaccents_grave(self, ctx: commands.Context, *, letter: str) -> None:
@@ -138,7 +155,9 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.grave(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
 
@@ -150,10 +169,11 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.interpunct(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
-
 
     @diaccents.command(name="macron")
     async def diaccents_macron(self, ctx: commands.Context, *, letter: str) -> None:
@@ -163,7 +183,9 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.macron(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
 
@@ -175,7 +197,9 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.ogonek(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
 
@@ -187,22 +211,28 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.ring(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
 
     @diaccents.command(name="ringacute")
-    async def diaccents_ring_and_acute(self, ctx: commands.Context, *, letter: str) -> None:
+    async def diaccents_ring_and_acute(
+        self, ctx: commands.Context, *, letter: str
+    ) -> None:
         """
         Get a ring + acute diacritic for a letter
         """
         try:
             accent = dcl.ring_and_acute(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
-    
+
     @diaccents.command(name="slash")
     async def diaccents_slash(self, ctx: commands.Context, *, letter: str) -> None:
         """
@@ -211,10 +241,12 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.slash(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
-    
+
     @diaccents.command(name="stroke")
     async def diaccents_stroke(self, ctx: commands.Context, *, letter: str) -> None:
         """
@@ -223,22 +255,27 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.stroke(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
 
     @diaccents.command(name="strocute")
-    async def diaccents_stroke_and_acute(self, ctx: commands.Context, *, letter: str) -> None:
+    async def diaccents_stroke_and_acute(
+        self, ctx: commands.Context, *, letter: str
+    ) -> None:
         """
         Get a stroke + acute diacritic for a letter
         """
         try:
             accent = dcl.stroke_and_acute(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
-    
 
     @diaccents.command(name="tilde")
     async def diaccents_tilde(self, ctx: commands.Context, *, letter: str) -> None:
@@ -248,7 +285,9 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.tilde(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
 
@@ -260,12 +299,12 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.tittle(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
 
-    
-    
     @diaccents.command(name="umlaut")
     async def diaccents_umlaut(self, ctx: commands.Context, *, letter: str) -> None:
         """
@@ -274,7 +313,9 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.umlaut(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
 
@@ -286,6 +327,8 @@ class Diaccents(commands.Cog):
         try:
             accent = dcl.umlaut_and_macron(letter)
         except dcl.errors.DiacriticError:
-            await ctx.send("This diacritic does not work with this letter, please try another ")
+            await ctx.send(
+                "This diacritic does not work with this letter, please try another "
+            )
         else:
             await ctx.send(accent)
