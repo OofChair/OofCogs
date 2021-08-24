@@ -9,7 +9,9 @@ class Commands(SXCU, name="SXCU"):
         """Shorten a link."""
         await self._shorten_command_logic(ctx, link)
 
-    @commands.command(aliases=["uploadimage", "imageupload"], cooldown_after_parsing=True)
+    @commands.command(
+        aliases=["uploadimage", "imageupload"], cooldown_after_parsing=True
+    )
     @commands.is_owner()
     @commands.cooldown(1, 60)
     async def upload(self, ctx: commands.Context):

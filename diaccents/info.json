@@ -1,0 +1,23 @@
+{
+    "name": "Diaccents",
+    "short": "Diaccents = Diacritic + accents",
+    "description": "Diacritic cog for Red",
+    "end_user_data_statement": "This cog does not store any user data.",
+    "install_msg": "Thank you for installing the Diaccents cog from OofCogs!",
+    "author": [
+        "OofChair",
+        ""
+    ],
+    "required_cogs": {},
+    "requirements": [],
+    "tags": [
+        "diacritic",
+        "accent",
+        "oofcogs",
+        "dcl"
+    ],
+    "min_bot_version": "3.3.10",
+    "hidden": false,
+    "disabled": false,
+    "type": "COG"
+}
