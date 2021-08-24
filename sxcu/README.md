@@ -1,5 +1,5 @@
-# RedditPic | Changelog
-### RedditPic cog,  gets a random picture from [r/memes](https://reddit.com/r/memes), or a subreddit of your choosing.
+# SXCU | Changelog
+### SXCU cog, upload images to [sxcu.net](https://sxcu.net) with your custom URL
 
 # v0.5.0
 
