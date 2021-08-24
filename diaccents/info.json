@@ -1,9 +1,9 @@
 {
     "name": "Diaccents",
     "short": "Diaccents = Diacritic + accents",
-    "description": "DCL",
-    "end_user_data_statement": "ok",
-    "install_msg": "Yes",
+    "description": "Diacritic cog for Red",
+    "end_user_data_statement": "This cog does not store any user data.",
+    "install_msg": "Thank you for installing the Diaccents cog from OofCogs!",
     "author": [
         "OofChair",
         ""
