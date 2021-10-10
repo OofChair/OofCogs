@@ -38,9 +38,7 @@ class Diaccents(commands.Cog):
         # TODO: Replace this with the proper end user data removal handling.
         super().red_delete_data_for_user(requester=requester, user_id=user_id)
 
-    @commands.group(
-        name="diaccents", aliases=["diac", "diacritic"], autohelp=True
-    )
+    @commands.group(name="diaccents", aliases=["diac", "diacritic"], autohelp=True)
     async def diaccents(self, ctx: commands.Context) -> None:
         """
         Diaccents = Diacritic + accents
