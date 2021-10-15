@@ -25,6 +25,7 @@ _JOBS = [
     "You work with aikaterna on Audio and earn {amount} {credit_name} for dealing with Java.",
     "You work with Slime and get... slimed. Gain {amount} {credit_name} for having to deal with that.",
     "You host Red on Heroku and lose {amount}.",
+    "You try to host Red on repl.it and lose {amount} {credit_name}."
 ]
 
 
