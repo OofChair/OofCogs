@@ -25,7 +25,7 @@ _JOBS = [
     "You work with aikaterna on Audio and earn {amount} {credit_name} for dealing with Java.",
     "You work with Slime and get... slimed. Gain {amount} {credit_name} for having to deal with that.",
     "You host Red on Heroku and lose {amount}.",
-    "You try to host Red on repl.it and lose {amount} {credit_name}."
+    "You try to host Red on repl.it and lose {amount} {credit_name}.",
 ]
 
 
@@ -35,7 +35,6 @@ class AdvancedEconomy(commands.Cog):
     """
 
     __version__ = "1.0.0"
-
 
     def format_help_for_context(self, ctx):
         """Thanks Sinbad!"""
@@ -71,12 +70,7 @@ class AdvancedEconomy(commands.Cog):
         self, *, requester: RequestType, user_id: int
     ) -> None:
         # TODO: Replace this with the proper end user data removal handling.
-        super().red_delete_data_for_user(requester=requester, user_id=user_id)
-
-    @commands.Cog.listener()
-    async def on_cog_load(self):
-        await bank.set_global(True)
-        pass
+        return
 
     @commands.group()
     @commands.guild_only()
@@ -94,8 +88,11 @@ class AdvancedEconomy(commands.Cog):
         Default: `500`
         """
         # Add amount arg to config
-        await self.config.default_payday.set(amount)
-        await ctx.tick()
+        if amount <= 0:
+            await ctx.send("This value can't be set below 0.")
+        else:
+            await self.config.default_payday.set(amount)
+            await ctx.tick()
 
     @economyset.command()
     async def setcreditname(self, ctx: commands.Context, credit_name):
@@ -112,8 +109,11 @@ class AdvancedEconomy(commands.Cog):
         """
         Set the maximum balance allowed
         """
-        await bank.get_max_balance(amount)
-        await ctx.tick()
+        if amount <= 0:
+            await ctx.send("This value can't be set below 0.")
+        else:
+            await bank.get_max_balance(amount)
+            await ctx.tick()
 
     @economyset.command()
     async def setbankname(self, ctx: commands.Context, *, bank_name):
@@ -154,6 +154,10 @@ class AdvancedEconomy(commands.Cog):
             next_payday = int(datetime.datetime.now().timestamp()) + next_payday_config
             credit_name = await bank.get_currency_name()
             current_bal = await bank.get_balance(ctx.author)
+            try:
+                await bank.deposit_credits(amount=currency, member=ctx.author)
+            except bank.errors.BalanceTooHigh as e:
+                await bank.set_balance(ctx.author, e.max_balance)
             await bank.deposit_credits(amount=currency, member=ctx.author)
             embed = discord.Embed(title="PAYDAY!! 🤑💰🤑", color=await ctx.embed_color())
             embed.add_field(
@@ -204,7 +208,15 @@ class AdvancedEconomy(commands.Cog):
             )
         )
         if "lose" in message.content:
-            await bank.withdraw_credits(amount=range, member=ctx.author)
-            message
+            try:
+                await bank.withdraw_credits(amount=range, member=ctx.author)
+                message
+            except ValueError as e:
+                await ctx.send(
+                    "You would've lost money on this payday, but you have nothing to lose! "
+                )
         else:
-            await bank.deposit_credits(amount=range, member=ctx.author)
+            try:
+                await bank.deposit_credits(amount=range, member=ctx.author)
+            except bank.errors.BalanceTooHigh as e:
+                await bank.set_balance(ctx.author, e.max_balance)
