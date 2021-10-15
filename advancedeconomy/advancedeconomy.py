@@ -74,6 +74,7 @@ class AdvancedEconomy(commands.Cog):
 
     @commands.group()
     @commands.guild_only()
+    @commands.is_owner()
     async def economyset(self, ctx):
         """
         Economy and bank settings
@@ -158,7 +159,6 @@ class AdvancedEconomy(commands.Cog):
                 await bank.deposit_credits(amount=currency, member=ctx.author)
             except bank.errors.BalanceTooHigh as e:
                 await bank.set_balance(ctx.author, e.max_balance)
-            await bank.deposit_credits(amount=currency, member=ctx.author)
             embed = discord.Embed(title="PAYDAY!! 🤑💰🤑", color=await ctx.embed_color())
             embed.add_field(
                 name="It's time to get paid!",
@@ -215,6 +215,7 @@ class AdvancedEconomy(commands.Cog):
                 await ctx.send(
                     "You would've lost money on this payday, but you have nothing to lose! "
                 )
+                await bank.set_balance(member=ctx.author, amount=0)
         else:
             try:
                 await bank.deposit_credits(amount=range, member=ctx.author)
