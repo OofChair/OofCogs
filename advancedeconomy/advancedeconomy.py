@@ -36,6 +36,7 @@ class AdvancedEconomy(commands.Cog):
 
     __version__ = "1.0.0"
 
+
     def format_help_for_context(self, ctx):
         """Thanks Sinbad!"""
         pre_processed = super().format_help_for_context(ctx)
@@ -188,6 +189,7 @@ class AdvancedEconomy(commands.Cog):
         await ctx.send(f"{ctx.author.mention}, your balance is {current_bal} ")
 
     @commands.command(aliases=["job"])
+    @commands.cooldown(1, 3600, commands.BucketType.user)
     @commands.guild_only()
     async def work(self, ctx):
         """
