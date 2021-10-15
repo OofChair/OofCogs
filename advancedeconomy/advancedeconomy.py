@@ -24,8 +24,9 @@ _JOBS = [
     "You work at Alti selling eyeshadow and gain {amount} {credit_name}.",
     "You work with aikaterna on Audio and earn {amount} {credit_name} for dealing with Java.",
     "You work with Slime and get... slimed. Gain {amount} {credit_name} for having to deal with that.",
-    "You host Red on Heroku and lose {amount}."
+    "You host Red on Heroku and lose {amount}.",
 ]
+
 
 class AdvancedEconomy(commands.Cog):
     """
@@ -33,7 +34,6 @@ class AdvancedEconomy(commands.Cog):
     """
 
     __version__ = "1.0.0"
-
 
     def format_help_for_context(self, ctx):
         """Thanks Sinbad!"""
@@ -55,9 +55,9 @@ class AdvancedEconomy(commands.Cog):
         default_user = {
             "next_payday": int(datetime.datetime.now().timestamp()),
         }
-        self.config.register_global(**default_global) 
-        self.config.register_member(**default_user)     
-        self.startup_task = self.bot.loop.create_task(self.startup()) 
+        self.config.register_global(**default_global)
+        self.config.register_member(**default_user)
+        self.startup_task = self.bot.loop.create_task(self.startup())
 
     def cog_unload(self):
         self.startup_task.cancel()
@@ -65,7 +65,9 @@ class AdvancedEconomy(commands.Cog):
     async def startup(self):
         await bank.set_global(True)
 
-    async def red_delete_data_for_user(self, *, requester: RequestType, user_id: int) -> None:
+    async def red_delete_data_for_user(
+        self, *, requester: RequestType, user_id: int
+    ) -> None:
         # TODO: Replace this with the proper end user data removal handling.
         super().red_delete_data_for_user(requester=requester, user_id=user_id)
 
@@ -104,7 +106,7 @@ class AdvancedEconomy(commands.Cog):
         await ctx.tick()
 
     @economyset.command()
-    async def setmaxbal(self, ctx: commands.Context,  amount: int):
+    async def setmaxbal(self, ctx: commands.Context, amount: int):
         """
         Set the maximum balance allowed
         """
@@ -138,28 +140,42 @@ class AdvancedEconomy(commands.Cog):
         Get daily money
         """
 
-        if await self.config.member(ctx.author).next_payday() == None or await self.config.member(ctx.author).next_payday() <= int(datetime.datetime.now().timestamp()):
+        if await self.config.member(
+            ctx.author
+        ).next_payday() == None or await self.config.member(
+            ctx.author
+        ).next_payday() <= int(
+            datetime.datetime.now().timestamp()
+        ):
             currency = await self.config.default_payday()
             next_payday_config = await self.config.payday_cooldown()
             next_payday = int(datetime.datetime.now().timestamp()) + next_payday_config
             credit_name = await bank.get_currency_name()
             current_bal = await bank.get_balance(ctx.author)
             await bank.deposit_credits(amount=currency, member=ctx.author)
-            embed=discord.Embed(title="PAYDAY!! 🤑💰🤑", color=await ctx.embed_color())
-            embed.add_field(name="It's time to get paid!", value=f"You just earned {currency} {credit_name}! \n\nYour new balance is: {current_bal} {credit_name}\n\nCome back <t:{next_payday}:R> to claim more money!", inline=False)
+            embed = discord.Embed(title="PAYDAY!! 🤑💰🤑", color=await ctx.embed_color())
+            embed.add_field(
+                name="It's time to get paid!",
+                value=f"You just earned {currency} {credit_name}! \n\nYour new balance is: {current_bal} {credit_name}\n\nCome back <t:{next_payday}:R> to claim more money!",
+                inline=False,
+            )
             embed.set_footer(text="💸💸")
             await ctx.send(embed=embed)
             await self.config.member(ctx.author).next_payday.set(next_payday)
             return
 
-        if await self.config.member(ctx.author).next_payday() >= int(datetime.datetime.now().timestamp()):        
+        if await self.config.member(ctx.author).next_payday() >= int(
+            datetime.datetime.now().timestamp()
+        ):
             currency = await self.config.default_payday()
             next_payday = await self.config.member(ctx.author).next_payday()
             credit_name = await self.config.credits_name()
             current_bal = await bank.get_balance(ctx.author)
-            await ctx.send(f"Sorry, you can't redeem your payday yet! You can redeem your next payday <t:{next_payday}:R>.")
+            await ctx.send(
+                f"Sorry, you can't redeem your payday yet! You can redeem your next payday <t:{next_payday}:R>."
+            )
             return
-        
+
     @commands.command(aliases=["bal"])
     @commands.guild_only()
     async def balance(self, ctx):
@@ -176,13 +192,16 @@ class AdvancedEconomy(commands.Cog):
         """
         Work at a job and gain/lose some currency.
         """
-        range = random.randint(10,1000)
+        range = random.randint(10, 1000)
         random_index = random.choice(_JOBS)
         credit_name = await bank.get_currency_name()
-        message = await ctx.send(random_index.replace("{amount}", str(range)).replace("{credit_name}", credit_name))
-        if  "lose" in message.content:
+        message = await ctx.send(
+            random_index.replace("{amount}", str(range)).replace(
+                "{credit_name}", credit_name
+            )
+        )
+        if "lose" in message.content:
             await bank.withdraw_credits(amount=range, member=ctx.author)
             message
         else:
             await bank.deposit_credits(amount=range, member=ctx.author)
-
