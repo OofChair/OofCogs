@@ -1,0 +1,22 @@
+{
+    "name": "AdvancedEconomy",
+    "short": "An advanced economy cog.",
+    "description": "advancedeconomy",
+    "end_user_data_statement": "This cog does not persistently store any data or metadata about users.",
+    "install_msg": "Thank you for installing the AdvancedEconomy cog from OofCogs.",
+    "author": [
+        "OofChair"
+    ],
+    "required_cogs": {},
+    "requirements": [],
+    "tags": [
+        "economy",
+        "advanced",
+        "advancedeconomy",
+        "oofcogs"
+    ],
+    "min_bot_version": "3.3.10",
+    "hidden": false,
+    "disabled": false,
+    "type": "COG"
+}
