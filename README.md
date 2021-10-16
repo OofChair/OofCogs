@@ -13,6 +13,9 @@ Cog Function
 | ServerPing | **Release** | <details><summary>Ping a domain or an IP to get the latency</summary>Ping an IP or a domain and get the latency back</details> |
 | SQL | **Release** | <details><summary>Interact with multiple DBs with this cog</summary>Interact with multiple DBs through this cog. <br>Current DBs added:<br> MySQL<br><br>Planned DBs: <br>MongoDB<br>PostgreSQL</details>
 | InviteTracker | **Release** | <details><summary>Post new joins/leaves in a channel with an invite tracker.</summary>Post new joins and leaves into a channel with an invite tracker attached to it.</details> |
+| SXCU | **Release** | <details><summary>Upload images to an SXCU url.</summary>Send your image and shorten your URL with your own subdomain.</details> |
+| Diaccents | **Release** | <details><summary>Get letters with accents.</summary>Enter a letter and get the diacritic associated with the letter.</details> |
+| AdvancedEconomy | **Release** | <details><summary>Level up your economy experience with this cog.</summary>This advanced economy cog is fun to play with, including `work` and `payday` commands.</details> |
 
 # Installation
 ### Recommended - Built-in Downloader
@@ -52,5 +55,8 @@ For support, please don't open an issue.
 
 Huge thanks to all the helpful people in #coding on the [discord support server](https://discord.gg/red)<br>
 Great help goes out to [epic guy#0715](https://github.com/npc203) for helping me with the Some Random API cog (Now called Fun cog, on dev branch)<br>
-Thanks to [@kreusada](https://github.com/kreusada), [@Just-Jojo](https://github.com/Just-Jojo), [@Andeeeee](https://github.com/Andeeeee) and [@Otriux](https://github.com/Otriux) for help with the RedditPic cog. <br>
+Thanks to [@Kreusada](https://github.com/kreusada), [@Just-Jojo](https://github.com/Just-Jojo), [@Andeeeee](https://github.com/Andeeeee) and [@Otriux](https://github.com/Otriux) for help with the RedditPic cog. <br>
 Thanks to [@Just-Jojo](https://github.com/Just-Jojo) for helping out on the SQL cog.
+Thanks to [@Kreusada](https://github.com/Kreusada) for creating the DCL lib that the Diaccents cog works with.
+Thanks to [@Just-Jojo](https://github.com/Just-Jojo) and [@aleclol](https://github.com/) for the review on the AdvancedEconomy cog.
+Thanks to [@Predeactor](https://github.com/Predeactor) for letting me take over development for the SXCU cog.
