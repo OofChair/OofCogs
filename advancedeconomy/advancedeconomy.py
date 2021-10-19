@@ -160,7 +160,6 @@ class AdvancedEconomy(commands.Cog):
                 await bank.set_balance(ctx.author, e.max_balance)
             current_bal = await bank.get_balance(ctx.author)
             msg = (
-                "**PAYDAY!!**\n"
                 f"You just earned {currency} {credit_name}!\n\n"
                 f"You new balance is {current_bal} {credit_name}\n\nCome back <t:{next_payday}:R> to claim more money!"
             )
@@ -174,7 +173,7 @@ class AdvancedEconomy(commands.Cog):
                 embed.set_footer(text="💸💸")
                 await ctx.send(embed=embed)
             else:
-                await ctx.send(msg)
+                await ctx.send(f"**Payday!!**\n\n{msg}")
             await self.config.member(ctx.author).next_payday.set(next_payday)
             return
 
