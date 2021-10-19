@@ -210,7 +210,7 @@ class AdvancedEconomy(commands.Cog):
         random_index = random.choice(_JOBS)
         credit_name = await bank.get_currency_name()
         message = await ctx.send(
-            random_index.format(amount=_range, credit_name=credit_name)
+            random_index.format(amount=str(_range), credit_name=credit_name)
         )
         if "lose" in message.content:
             try:
