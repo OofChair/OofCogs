@@ -213,7 +213,7 @@ class AdvancedEconomy(commands.Cog):
         )
         if "lose" in message.content:
             try:
-                await bank.withdraw_credits(amount=range, member=ctx.author)
+                await bank.withdraw_credits(amount=_range, member=ctx.author)
                 message
             except ValueError as e:
                 await ctx.send(
@@ -222,6 +222,6 @@ class AdvancedEconomy(commands.Cog):
                 await bank.set_balance(member=ctx.author, amount=0)
         else:
             try:
-                await bank.deposit_credits(amount=range, member=ctx.author)
+                await bank.deposit_credits(amount=_range, member=ctx.author)
             except bank.errors.BalanceTooHigh as e:
                 await bank.set_balance(ctx.author, e.max_balance)
