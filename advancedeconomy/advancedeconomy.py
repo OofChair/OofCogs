@@ -54,7 +54,7 @@ class AdvancedEconomy(commands.Cog):
             "payday_cooldown": 300,
         }
         default_user = {
-            "next_payday": int(datetime.datetime.now().timestamp()),
+            "next_payday": 0,
         }
         self.config.register_global(**default_global)
         self.config.register_member(**default_user)

@@ -95,7 +95,6 @@ class SQL(commands.Cog):
             await self.bot.loop.run_in_executor(
                 None, self.cursorr.execute, f"CREATE DATABASE {database_name}"
             )
-            await ctx.tick()
             await ctx.reply(f"{database_name} has been created.", mention_author=False)
 
     @mysql.command()
@@ -140,7 +139,6 @@ class SQL(commands.Cog):
             await self.bot.loop.run_in_executor(
                 None, self.cursorr.execute, f"DROP DATABASE {database_name}"
             )
-            await ctx.tick()
             await ctx.reply(
                 f'The database "{database_name}" has been deleted.',
                 mention_author=False,

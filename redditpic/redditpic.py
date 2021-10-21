@@ -33,13 +33,13 @@ class RedditPic(commands.Cog):
 
     # Kill session on cog unload
     def cog_unload(self):
-        self.bot.loop.run_until_complete(self.session.close())
+        self.bot.loop.create_task(self.session.close())
 
     async def red_delete_data_for_user(
         self, *, requester: RequestType, user_id: int
     ) -> None:
         # TODO: Replace this with the proper end user data removal handling.
-        super().red_delete_data_for_user(requester=requester, user_id=user_id)
+        return
 
     # Command code
 

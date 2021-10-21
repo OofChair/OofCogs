@@ -3,7 +3,7 @@
     "short": "An advanced economy cog.",
     "description": "advancedeconomy",
     "end_user_data_statement": "This cog does not persistently store any data or metadata about users.",
-    "install_msg": "Thank you for installing the AdvancedEconomy cog from OofCogs.",
+    "install_msg": "Thank you for installing the AdvancedEconomy cog from OofCogs.\n\nThis cog will make your economy global.",
     "author": [
         "OofChair"
     ],

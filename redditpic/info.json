@@ -8,7 +8,7 @@
         "OofChair"
     ],
     "required_cogs": {},
-    "requirements": ["aiohttp"],
+    "requirements": [],
     "tags": [
         "meme",
         "reddit",

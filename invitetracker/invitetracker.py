@@ -8,7 +8,6 @@ from collections import defaultdict
 
 RequestType = Literal["discord_deleted_user", "owner", "user", "user_strict"]
 
-
 class InviteTracker(commands.Cog):
     """
     An invite tracker cog for Red.
@@ -43,7 +42,8 @@ class InviteTracker(commands.Cog):
         self, *, requester: RequestType, user_id: int
     ) -> None:
         # TODO: Replace this with the proper end user data removal handling.
-        super().red_delete_data_for_user(requester=requester, user_id=user_id)
+        return
+
 
     async def load(self):
         for guild in self.bot.guilds:
