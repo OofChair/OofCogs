@@ -113,12 +113,19 @@ class AdvancedEconomy(commands.Cog):
         """
         How to set other settings not found here
         """
-        embed=discord.Embed(title="AdvancedEconomy")
-        embed.add_field(name="How do I set more commands??", value="More commands, such as setting the credit name, bank name, and setting t he maximum balance a user can have, are located in the Bank cog. Do not change the `bankset setglobal` value, as this will cause problems with AdvancedEconomy.", inline=False)
-        embed.add_field(name="How do I get to the Bank cog?", value=f"You can load the Bank cog with `{ctx.prefix}load bank`. ", inline=False)
+        embed = discord.Embed(title="AdvancedEconomy")
+        embed.add_field(
+            name="How do I set more commands??",
+            value="More commands, such as setting the credit name, bank name, and setting t he maximum balance a user can have, are located in the Bank cog. Do not change the `bankset setglobal` value, as this will cause problems with AdvancedEconomy.",
+            inline=False,
+        )
+        embed.add_field(
+            name="How do I get to the Bank cog?",
+            value=f"You can load the Bank cog with `{ctx.prefix}load bank`. ",
+            inline=False,
+        )
         embed.set_footer(text="AdvancedEconomy")
         await ctx.send(embed=embed)
-
 
     @commands.command()
     @commands.guild_only()
@@ -135,7 +142,10 @@ class AdvancedEconomy(commands.Cog):
         ):
             currency = await self.config.default_payday()
             next_payday_config = await self.config.payday_cooldown()
-            next_payday = int(datetime.datetime.now(datetime.timezone.utc).timestamp()) + next_payday_config
+            next_payday = (
+                int(datetime.datetime.now(datetime.timezone.utc).timestamp())
+                + next_payday_config
+            )
             credit_name = await bank.get_currency_name()
             current_bal = await bank.get_balance(ctx.author)
             try:

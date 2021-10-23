@@ -9,6 +9,7 @@ from redbot.core.errors import CogLoadError
 
 RequestType = Literal["discord_deleted_user", "owner", "user", "user_strict"]
 
+
 class InviteTracker(commands.Cog):
     """
     An invite tracker cog for Red.
@@ -45,17 +46,16 @@ class InviteTracker(commands.Cog):
         # TODO: Replace this with the proper end user data removal handling.
         return
 
-
     async def load(self, ctx):
-            if ctx.me.guild_permissions.manage_guild == True:
-                try:
-                    self.invites[guild.id] = await guild.invites()
-                except discord.Forbidden:
-                    pass
-                except Exception as e:
-                    print(e, flush=True)
-            else:
-                raise CogLoadError("")
+        if ctx.me.guild_permissions.manage_guild == True:
+            try:
+                self.invites[guild.id] = await guild.invites()
+            except discord.Forbidden:
+                pass
+            except Exception as e:
+                print(e, flush=True)
+        else:
+            raise CogLoadError("")
 
     def find_invite_by_code(self, inv_list, code):
         for inv in inv_list:
@@ -88,7 +88,9 @@ class InviteTracker(commands.Cog):
                 await self.config.guild(ctx.guild).channel.set(channel.id)
             await ctx.send(f"The log channel has been set to {channel.mention}")
         else:
-            await ctx.send("I can't send messages in that channel! Please give me perms and retry this command.")
+            await ctx.send(
+                "I can't send messages in that channel! Please give me perms and retry this command."
+            )
 
     @invitetrackerset.command()
     async def enable(self, ctx, yes_or_no: bool):
@@ -114,13 +116,9 @@ class InviteTracker(commands.Cog):
         async with ctx.typing():
             await self.config.guild(ctx.guild).leaveenabled.set(yes_or_no)
         if yes_or_no:
-            await ctx.send(
-                "Leave invite tracking has been turned on for this guild."
-            )
+            await ctx.send("Leave invite tracking has been turned on for this guild.")
         else:
-            await ctx.send(
-                "Leave invite tracking has been turned off for this guild."
-            )
+            await ctx.send("Leave invite tracking has been turned off for this guild.")
 
     @invitetrackerset.command()
     async def joinenable(self, ctx, yes_or_no: bool):
@@ -132,13 +130,9 @@ class InviteTracker(commands.Cog):
         async with ctx.typing():
             await self.config.guild(ctx.guild).joinenabled.set(yes_or_no)
         if yes_or_no is True:
-            await ctx.send(
-                "Join invite tracking has been turned on for this guild."
-            )
+            await ctx.send("Join invite tracking has been turned on for this guild.")
         else:
-            await ctx.send(
-                "Join invite tracking has been turned off for this guild."
-            )
+            await ctx.send("Join invite tracking has been turned off for this guild.")
 
     @commands.command(aliases=["userinvites"])
     async def invitesforuser(self, ctx, user: discord.Member = None):
@@ -158,7 +152,9 @@ class InviteTracker(commands.Cog):
                 )
             await ctx.send(embed=embed)
         else:
-            await ctx.send("I can't access invites. Please make sure I have the right permissions and try again.")
+            await ctx.send(
+                "I can't access invites. Please make sure I have the right permissions and try again."
+            )
 
     # Invite tracking
 
@@ -194,10 +190,16 @@ class InviteTracker(commands.Cog):
         ):
             await logs.send(embed=embed)
         else:
-            embed = discord.Embed(description="Just joined the server", color=0x03D692, title=" ")
+            embed = discord.Embed(
+                description="Just joined the server", color=0x03D692, title=" "
+            )
             embed.set_author(name=str(member), icon_url=member.avatar_url)
             embed.set_footer(text="ID: " + str(member.id))
-            embed.add_field(name="Couldn't find invite!", value=f"I couldn't find the invite that this user used. ", inline=False,)
+            embed.add_field(
+                name="Couldn't find invite!",
+                value=f"I couldn't find the invite that this user used. ",
+                inline=False,
+            )
 
     @commands.Cog.listener()
     async def on_member_remove(self, ctx, member: discord.Member) -> None:
@@ -232,7 +234,13 @@ class InviteTracker(commands.Cog):
         ):
             await logs.send(embed=embed)
         else:
-            embed = discord.Embed(description="Just joined the server", color=0x03D692, title=" ")
+            embed = discord.Embed(
+                description="Just joined the server", color=0x03D692, title=" "
+            )
             embed.set_author(name=str(member), icon_url=member.avatar_url)
             embed.set_footer(text="ID: " + str(member.id))
-            embed.add_field(name="Couldn't find invite!", value=f"I couldn't find the invite that this user used. ", inline=False,)
+            embed.add_field(
+                name="Couldn't find invite!",
+                value=f"I couldn't find the invite that this user used. ",
+                inline=False,
+            )
