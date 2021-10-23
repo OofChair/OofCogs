@@ -57,7 +57,7 @@ class AdvancedEconomy(commands.Cog):
             "next_payday": 0,
         }
         self.config.register_global(**default_global)
-        self.config.register_member(**default_user)
+        self.config.register_user(**default_user)
         self.startup_task = self.bot.loop.create_task(self.startup())
 
     def cog_unload(self):
@@ -96,45 +96,29 @@ class AdvancedEconomy(commands.Cog):
             await ctx.tick()
 
     @economyset.command()
-    async def setcreditname(self, ctx: commands.Context, credit_name):
-        """
-        Set the credit name
-
-        Default: `credits`
-        """
-        await bank.set_currency_name(credit_name)
-        await ctx.tick()
-
-    @economyset.command()
-    async def setmaxbal(self, ctx: commands.Context, amount: int):
-        """
-        Set the maximum balance allowed
-        """
-        if amount <= 0:
-            await ctx.send("This value can't be set below 0.")
-        else:
-            await bank.get_max_balance(amount)
-            await ctx.tick()
-
-    @economyset.command()
-    async def setbankname(self, ctx: commands.Context, *, bank_name):
-        """
-        Set bank name
-
-        Default: `First Bank of Red`
-        """
-        await bank.set_bank_name(bank_name)
-        await ctx.tick()
-
-    @economyset.command()
     async def setcooldown(self, ctx: commands.Context, cooldown: int):
         """
         Set cooldown (in seconds)
 
         Default: `300`
         """
-        await self.config.payday_cooldown.set(cooldown)
-        await ctx.tick()
+        if cooldown <= 0:
+            await ctx.send("This value can't be set below 0.")
+        else:
+            await self.config.payday_cooldown.set(cooldown)
+            await ctx.tick()
+
+    @economyset.command()
+    async def about(self, ctx):
+        """
+        How to set other settings not found here
+        """
+        embed=discord.Embed(title="AdvancedEconomy")
+        embed.add_field(name="How do I set more commands??", value="More commands, such as setting the credit name, bank name, and setting t he maximum balance a user can have, are located in the Bank cog. Do not change the `bankset setglobal` value, as this will cause problems with AdvancedEconomy.", inline=False)
+        embed.add_field(name="How do I get to the Bank cog?", value=f"You can load the Bank cog with `{ctx.prefix}load bank`. ", inline=False)
+        embed.set_footer(text="AdvancedEconomy")
+        await ctx.send(embed=embed)
+
 
     @commands.command()
     @commands.guild_only()
@@ -142,17 +126,16 @@ class AdvancedEconomy(commands.Cog):
         """
         Get daily money
         """
-
         if await self.config.member(
             ctx.author
         ).next_payday() == None or await self.config.member(
             ctx.author
         ).next_payday() <= int(
-            datetime.datetime.now().timestamp()
+            datetime.datetime.now(datetime.timezone.utc).timestamp()
         ):
             currency = await self.config.default_payday()
             next_payday_config = await self.config.payday_cooldown()
-            next_payday = int(datetime.datetime.now().timestamp()) + next_payday_config
+            next_payday = int(datetime.datetime.now(datetime.timezone.utc).timestamp()) + next_payday_config
             credit_name = await bank.get_currency_name()
             current_bal = await bank.get_balance(ctx.author)
             try:
@@ -171,7 +154,7 @@ class AdvancedEconomy(commands.Cog):
             return
 
         if await self.config.member(ctx.author).next_payday() >= int(
-            datetime.datetime.now().timestamp()
+            datetime.datetime.now(datetime.timezone.utc).timestamp()
         ):
             currency = await self.config.default_payday()
             next_payday = await self.config.member(ctx.author).next_payday()
@@ -211,7 +194,7 @@ class AdvancedEconomy(commands.Cog):
             try:
                 await bank.withdraw_credits(amount=range, member=ctx.author)
                 message
-            except ValueError as e:
+            except ValueError:
                 await ctx.send(
                     "You would've lost money on this payday, but you have nothing to lose! "
                 )
