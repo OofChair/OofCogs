@@ -34,7 +34,7 @@ class AdvancedEconomy(commands.Cog):
     An advanced economy cog.
     """
 
-    __version__ = "1.0.0"
+    __version__ = "1.0.1"
 
     def format_help_for_context(self, ctx):
         """Thanks Sinbad!"""
@@ -142,14 +142,22 @@ class AdvancedEconomy(commands.Cog):
                 await bank.deposit_credits(amount=currency, member=ctx.author)
             except bank.errors.BalanceTooHigh as e:
                 await bank.set_balance(ctx.author, e.max_balance)
-            embed = discord.Embed(title="PAYDAY!! 🤑💰🤑", color=await ctx.embed_color())
-            embed.add_field(
-                name="It's time to get paid!",
-                value=f"You just earned {currency} {credit_name}! \n\nYour new balance is: {current_bal} {credit_name}\n\nCome back <t:{next_payday}:R> to claim more money!",
-                inline=False,
+            current_bal = await bank.get_balance(ctx.author)
+            msg = (
+                f"You just earned {currency} {credit_name}!\n\n"
+                f"You new balance is {current_bal} {credit_name}\n\nCome back <t:{next_payday}:R> to claim more money!"
             )
-            embed.set_footer(text="💸💸")
-            await ctx.send(embed=embed)
+            if await ctx.embed_requested():
+                embed = discord.Embed(title="PAYDAY!! 🤑💰🤑", color=await ctx.embed_color())
+                embed.add_field(
+                    name="It's time to get paid!",
+                    value=msg,
+                    inline=False,
+                )
+                embed.set_footer(text="💸💸")
+                await ctx.send(embed=embed)
+            else:
+                await ctx.send(f"**Payday!!**\n\n{msg}")
             await self.config.member(ctx.author).next_payday.set(next_payday)
             return
 
@@ -158,7 +166,6 @@ class AdvancedEconomy(commands.Cog):
         ):
             currency = await self.config.default_payday()
             next_payday = await self.config.member(ctx.author).next_payday()
-            credit_name = await self.config.credits_name()
             current_bal = await bank.get_balance(ctx.author)
             await ctx.send(
                 f"Sorry, you can't redeem your payday yet! You can redeem your next payday <t:{next_payday}:R>."
@@ -182,17 +189,15 @@ class AdvancedEconomy(commands.Cog):
         """
         Work at a job and gain/lose some currency.
         """
-        range = random.randint(10, 1000)
+        _range = random.randint(10, 1000)
         random_index = random.choice(_JOBS)
         credit_name = await bank.get_currency_name()
         message = await ctx.send(
-            random_index.replace("{amount}", str(range)).replace(
-                "{credit_name}", credit_name
-            )
+            random_index.format(amount=str(_range), credit_name=credit_name)
         )
         if "lose" in message.content:
             try:
-                await bank.withdraw_credits(amount=range, member=ctx.author)
+                await bank.withdraw_credits(amount=_range, member=ctx.author)
                 message
             except ValueError:
                 await ctx.send(
@@ -201,6 +206,6 @@ class AdvancedEconomy(commands.Cog):
                 await bank.set_balance(member=ctx.author, amount=0)
         else:
             try:
-                await bank.deposit_credits(amount=range, member=ctx.author)
+                await bank.deposit_credits(amount=_range, member=ctx.author)
             except bank.errors.BalanceTooHigh as e:
                 await bank.set_balance(ctx.author, e.max_balance)
