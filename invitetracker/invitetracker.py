@@ -30,7 +30,7 @@ class InviteTracker(commands.Cog):
         }
         self.config.register_guild(**default_guild)
         self.invites = defaultdict(list)
-        bot.loop.create_task(self.load(ctx))
+        bot.loop.create_task(self.load())
 
     __version__ = "1.2.0"
 
