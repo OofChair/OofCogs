@@ -12,7 +12,7 @@ Cog Function
 | RedditPic | **Release** | <details><summary>Get pictures from Reddit</summary>Get pictures from different subreddits, built in meme command and command to get from other subreddits</details> |
 | ServerPing | **Release** | <details><summary>Ping a domain or an IP to get the latency</summary>Ping an IP or a domain and get the latency back</details> |
 | SQL | **Release** | <details><summary>Interact with multiple DBs with this cog</summary>Interact with multiple DBs through this cog. <br>Current DBs added:<br> MySQL<br><br>Planned DBs: <br>MongoDB<br>PostgreSQL</details>
-| InviteTracker | **Release** | <details><summary>Post new joins/leaves in a channel with an invite tracker.</summary>Post new joins and leaves into a channel with an invite tracker attached to it.</details> |
+| InviteTracker | **Release** (Currently disabled) | <details><summary>Post new joins/leaves in a channel with an invite tracker.</summary>Post new joins and leaves into a channel with an invite tracker attached to it.</details> |
 | SXCU | **Release** | <details><summary>Upload images to an SXCU url.</summary>Send your image and shorten your URL with your own subdomain.</details> |
 | Diaccents | **Release** | <details><summary>Get letters with accents.</summary>Enter a letter and get the diacritic associated with the letter.</details> |
 | AdvancedEconomy | **Release** | <details><summary>Level up your economy experience with this cog.</summary>This advanced economy cog is fun to play with, including `work` and `payday` commands.</details> |

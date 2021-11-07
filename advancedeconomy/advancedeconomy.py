@@ -158,7 +158,9 @@ class AdvancedEconomy(commands.Cog):
                 f"You new balance is {current_bal} {credit_name}\n\nCome back <t:{next_payday}:R> to claim more money!"
             )
             if await ctx.embed_requested():
-                embed = discord.Embed(title="PAYDAY!! 🤑💰🤑", color=await ctx.embed_color())
+                embed = discord.Embed(
+                    title="PAYDAY!! 🤑💰🤑", color=await ctx.embed_color()
+                )
                 embed.add_field(
                     name="It's time to get paid!",
                     value=msg,
