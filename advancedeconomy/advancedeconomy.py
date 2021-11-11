@@ -133,9 +133,9 @@ class AdvancedEconomy(commands.Cog):
         """
         Get daily money
         """
-        if await self.config.member(
+        if await self.config.user(
             ctx.author
-        ).next_payday() == None or await self.config.member(
+        ).next_payday() == None or await self.config.user(
             ctx.author
         ).next_payday() <= int(
             datetime.datetime.now(datetime.timezone.utc).timestamp()
@@ -168,14 +168,14 @@ class AdvancedEconomy(commands.Cog):
                 await ctx.send(embed=embed)
             else:
                 await ctx.send(f"**Payday!!**\n\n{msg}")
-            await self.config.member(ctx.author).next_payday.set(next_payday)
+            await self.config.user(ctx.author).next_payday.set(next_payday)
             return
 
-        if await self.config.member(ctx.author).next_payday() >= int(
+        if await self.config.user(ctx.author).next_payday() >= int(
             datetime.datetime.now(datetime.timezone.utc).timestamp()
         ):
             currency = await self.config.default_payday()
-            next_payday = await self.config.member(ctx.author).next_payday()
+            next_payday = await self.config.user(ctx.author).next_payday()
             current_bal = await bank.get_balance(ctx.author)
             await ctx.send(
                 f"Sorry, you can't redeem your payday yet! You can redeem your next payday <t:{next_payday}:R>."
