@@ -7,6 +7,7 @@ from redbot.core.bot import Red
 from redbot.core.config import Config
 import datetime
 from redbot.core import bank
+from redbot.core.utils.chat_formatting import humanize_number
 import random
 
 RequestType = Literal["discord_deleted_user", "owner", "user", "user_strict"]
@@ -155,7 +156,8 @@ class AdvancedEconomy(commands.Cog):
             current_bal = await bank.get_balance(ctx.author)
             msg = (
                 f"You just earned {currency} {credit_name}!\n\n"
-                f"You new balance is {current_bal} {credit_name}\n\nCome back <t:{next_payday}:R> to claim more money!"
+                f"You new balance is {humanize_number(current_bal)} {credit_name}\n\n"
+                f"Come back <t:{next_payday}:R> to claim more money!"
             )
             if await ctx.embed_requested():
                 embed = discord.Embed(
@@ -182,7 +184,6 @@ class AdvancedEconomy(commands.Cog):
             await ctx.send(
                 f"Sorry, you can't redeem your payday yet! You can redeem your next payday <t:{next_payday}:R>."
             )
-            return
 
     @commands.command(aliases=["bal"])
     @commands.guild_only()
@@ -192,7 +193,7 @@ class AdvancedEconomy(commands.Cog):
         """
         current_bal = await bank.get_balance(ctx.author)
         credit_name = await bank.get_currency_name()
-        await ctx.send(f"{ctx.author.mention}, your balance is {current_bal} ")
+        await ctx.send(f"{ctx.author.mention}, your balance is {humanize_number(current_bal)} ")
 
     @commands.command(aliases=["job"])
     @commands.cooldown(1, 3600, commands.BucketType.user)
