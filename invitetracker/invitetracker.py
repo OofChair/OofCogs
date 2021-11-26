@@ -46,8 +46,8 @@ class InviteTracker(commands.Cog):
         # TODO: Replace this with the proper end user data removal handling.
         return
 
-    async def load(self, ctx):
-        if ctx.me.guild_permissions.manage_guild == True:
+    async def load(self):
+        if self.me.guild_permissions.manage_guild == True:
             try:
                 self.invites[guild.id] = await guild.invites()
             except discord.Forbidden:
@@ -83,7 +83,7 @@ class InviteTracker(commands.Cog):
         Arguments:
         `channel`: Select the channel for the invite logging to be sent to
         """
-        if ctx.channel.permissions_for(channel).send_messages == True:
+        if channel.permissions_for(channel.guild.me).send_messages == True:
             async with ctx.typing():
                 await self.config.guild(ctx.guild).channel.set(channel.id)
             await ctx.send(f"The log channel has been set to {channel.mention}")
