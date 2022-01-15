@@ -9,7 +9,7 @@ Cog Function
 
 | Name | Status | Description (Click to see full status)
 | --- | --- | --- |
-| RedditPic | **Release** | <details><summary>Get pictures from Reddit</summary>Get pictures from different subreddits, built in meme command and command to get from other subreddits</details> |
+| RedditPic | **Deprecated** | <details><summary>This cog is now removed from my repo.</summary>The API that it was using is no longer in service. I may remake this with a different API but at the moment I have no intentions of remaking this cog.</details> |
 | ServerPing | **Release** | <details><summary>Ping a domain or an IP to get the latency</summary>Ping an IP or a domain and get the latency back</details> |
 | SQL | **Release** | <details><summary>Interact with multiple DBs with this cog</summary>Interact with multiple DBs through this cog. <br>Current DBs added:<br> MySQL<br><br>Planned DBs: <br>MongoDB<br>PostgreSQL</details>
 | InviteTracker | **Release** (Currently disabled) | <details><summary>Post new joins/leaves in a channel with an invite tracker.</summary>Post new joins and leaves into a channel with an invite tracker attached to it.</details> |
