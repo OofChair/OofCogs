@@ -154,10 +154,7 @@ class InviteTracker(commands.Cog):
                     )
         except Exception as e:
             print(str(e))
-        if (
-            await self.config.guild(member.guild).enabled()
-            and await self.config.guild(member.guild).enabled()
-        ):
+        if (await self.config.guild(member.guild).enabled()):
             await logs.send(embed=embed)
         else:
             embed = discord.Embed(
