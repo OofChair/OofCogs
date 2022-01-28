@@ -25,12 +25,9 @@ class InviteTracker(commands.Cog):
         default_guild = {
             "enabled": False,
             "channel": None,
-            "joinenabled": True,
-            "leaveenabled": True,
         }
         self.config.register_guild(**default_guild)
         self.invites = defaultdict(list)
-        bot.loop.create_task(self.load())
 
     __version__ = "1.2.0"
 
@@ -46,10 +43,11 @@ class InviteTracker(commands.Cog):
         # TODO: Replace this with the proper end user data removal handling.
         return
 
-    async def load(self):
-        if self.me.guild_permissions.manage_guild == True:
+    async def load(self, ctx):
+        self.bot.loop.create_task(self.load(ctx))
+        if ctx.me.guild_permissions.manage_guild == True:
             try:
-                self.invites[guild.id] = await guild.invites()
+                self.invites[ctx.guild.id] = await ctx.guild.invites()
             except discord.Forbidden:
                 pass
             except Exception as e:
@@ -71,8 +69,6 @@ class InviteTracker(commands.Cog):
         Commands:
         `[p]invset channel` - Sets the invite logging channel
         `[p]invset enable` - Enable invite logging in your server
-        `[p]invset leaveenable` - Enable/disable leave messages
-        `[p]invset joinenable` - Enable/disable join invite messages
         """
         pass
 
@@ -83,7 +79,7 @@ class InviteTracker(commands.Cog):
         Arguments:
         `channel`: Select the channel for the invite logging to be sent to
         """
-        if channel.permissions_for(channel.guild.me).send_messages == True:
+        if ctx.channel.permissions_for(channel.guild.me).send_messages == True:
             async with ctx.typing():
                 await self.config.guild(ctx.guild).channel.set(channel.id)
             await ctx.send(f"The log channel has been set to {channel.mention}")
@@ -94,47 +90,21 @@ class InviteTracker(commands.Cog):
 
     @invitetrackerset.command()
     async def enable(self, ctx, yes_or_no: bool):
-        """Enable/disable invite logging
+        """
+        Enable/disable invite logging
 
         Arguments:
         `yes_or_no`: Enable/disable invite logging with yes or no, true or false, etc.
         """
         async with ctx.typing():
             await self.config.guild(ctx.guild).enabled.set(yes_or_no)
-        if yes_or_no:
-            await ctx.send("Invite tracking has been turned on for this guild.")
-        else:
-            await ctx.send("Invite tracking has been turned off for this guild.")
-
-    @invitetrackerset.command()
-    async def leaveenable(self, ctx, yes_or_no: bool):
-        """Enable/disable leave messages
-
-        Arguments:
-        `yes_or_no`: Enable/disable leave logging with yes or no, true or false, etc.
-        """
-        async with ctx.typing():
-            await self.config.guild(ctx.guild).leaveenabled.set(yes_or_no)
-        if yes_or_no:
-            await ctx.send("Leave invite tracking has been turned on for this guild.")
-        else:
-            await ctx.send("Leave invite tracking has been turned off for this guild.")
-
-    @invitetrackerset.command()
-    async def joinenable(self, ctx, yes_or_no: bool):
-        """Enable/disable join messages
-
-        Arguments:
-        `yes_or_no`: Enable/disable join invite logging with yes or no, true or false, etc.
-        """
-        async with ctx.typing():
-            await self.config.guild(ctx.guild).joinenabled.set(yes_or_no)
         if yes_or_no is True:
             await ctx.send("Join invite tracking has been turned on for this guild.")
         else:
             await ctx.send("Join invite tracking has been turned off for this guild.")
 
     @commands.command(aliases=["userinvites"])
+    @commands.guild_only()
     async def invitesforuser(self, ctx, user: discord.Member = None):
         """See how many times a user's invites have been used"""
         if ctx.channel.permissions_for(ctx.me).manage_guild == True:
@@ -144,11 +114,11 @@ class InviteTracker(commands.Cog):
                 total_invites = 0
                 for i in await ctx.guild.invites():
                     if i.inviter == user:
-                        total_invites += i.uses
+                        total_invites = total_invites + 1
                 embed = discord.Embed(title="📫 Invite counter")
                 embed.add_field(
-                    name=f"​​​​​Invites for {user.name}#{user.discriminator}",
-                    value=f"{total_invites} times!",
+                    name=f"Invites for {user.name}#{user.discriminator}",
+                    value=f"{total_invites} invites!",
                 )
             await ctx.send(embed=embed)
         else:
@@ -157,19 +127,20 @@ class InviteTracker(commands.Cog):
             )
 
     # Invite tracking
-
+    @commands.bot_has_permissions(manage_guild=True)
     @commands.Cog.listener()
-    async def on_member_join(self, ctx, member: discord.Member) -> None:
+    async def on_member_join(self, member: discord.Member) -> None:
         """On member listener for new users"""
         logs_channel = await self.config.guild(member.guild).channel()
-        logs = member.guild.get_channel(logs_channel)
+        logs = self.bot.get_channel(logs_channel)
         if not logs:
             return
         embed = discord.Embed(
-            description="Just joined the server", color=0x03D692, title=" "
+            title="Just joined the server",
+            color=0x03D692,
         )
         embed.set_author(name=str(member), icon_url=member.avatar_url)
-        embed.set_footer(text="ID: " + str(member.id))
+        embed.set_footer(text=f"ID: {member.id}")
         try:
             invs_before = self.invites[member.guild.id]
             invs_after = await member.guild.invites()
@@ -178,69 +149,26 @@ class InviteTracker(commands.Cog):
                 if invite.uses < self.find_invite_by_code(invs_after, invite.code).uses:
                     embed.add_field(
                         name="Used invite",
-                        value=f"Inviter: {invite.inviter.mention} (`{invite.inviter}` | `{str(invite.inviter.id)}`)\nCode: `{invite.code}`\nUses: ` {str(invite.uses)} `",
+                        value=f"Inviter: {invite.inviter.mention} (`{invite.inviter}` | `{int(invite.inviter.id)}`)\nCode: `{invite.code}`\nUses: `{int(invite.uses)}`",
                         inline=False,
                     )
         except Exception as e:
             print(str(e))
         if (
-            self.config.guild(member.guild).enabled
-            and self.config.guild(member.guild).joinenabled
-            and ctx.channel.permissions_for(ctx.me).manage_guild() == True
+            await self.config.guild(member.guild).enabled()
+            and await self.config.guild(member.guild).enabled()
         ):
             await logs.send(embed=embed)
         else:
             embed = discord.Embed(
-                description="Just joined the server", color=0x03D692, title=" "
+                title="Just joined the server",
+                color=0x03D692,
             )
             embed.set_author(name=str(member), icon_url=member.avatar_url)
-            embed.set_footer(text="ID: " + str(member.id))
+            embed.set_footer(text=f"ID: {member.id}")
             embed.add_field(
                 name="Couldn't find invite!",
                 value=f"I couldn't find the invite that this user used. ",
                 inline=False,
             )
-
-    @commands.Cog.listener()
-    async def on_member_remove(self, ctx, member: discord.Member) -> None:
-        """On member listener for users leaving"""
-        logs_channel = await self.config.guild(member.guild).channel()
-        logs = member.guild.get_channel(logs_channel)
-        if not logs:
-            return
-        embed = discord.Embed(
-            description="Just left the server", color=0xFF0000, title=" "
-        )
-        embed.set_author(name=str(member), icon_url=member.avatar_url)
-        embed.set_footer(text="ID: " + str(member.id))
-        embed.timestamp = member.joined_at
-        try:
-            invs_before = self.invites[member.guild.id]
-            invs_after = await member.guild.invites()
-            self.invites[member.guild.id] = invs_after
-            for invite in invs_before:
-                if invite.uses > self.find_invite_by_code(invs_after, invite.code).uses:
-                    embed.add_field(
-                        name="Used invite",
-                        value=f"Inviter: {invite.inviter.mention} (`{invite.inviter}` | `{str(invite.inviter.id)}`)\nCode: `{invite.code}`\nUses: ` {str(invite.uses)} `",
-                        inline=False,
-                    )
-        except Exception as e:
-            print(str(e))
-        if (
-            self.config.guild(member.guild).enabled
-            and self.config.guild(member.guild).joinenabled
-            and ctx.channel.permissions_for(ctx.me).manage_guild() == True
-        ):
             await logs.send(embed=embed)
-        else:
-            embed = discord.Embed(
-                description="Just joined the server", color=0x03D692, title=" "
-            )
-            embed.set_author(name=str(member), icon_url=member.avatar_url)
-            embed.set_footer(text="ID: " + str(member.id))
-            embed.add_field(
-                name="Couldn't find invite!",
-                value=f"I couldn't find the invite that this user used. ",
-                inline=False,
-            )
