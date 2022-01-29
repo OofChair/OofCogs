@@ -88,6 +88,7 @@ class InviteTracker(commands.Cog):
                 "I can't send messages in that channel! Please give me perms and retry this command."
             )
 
+    @commands.bot_has_permissions(manage_guild=True)
     @invitetrackerset.command()
     async def enable(self, ctx, yes_or_no: bool):
         """
@@ -127,45 +128,39 @@ class InviteTracker(commands.Cog):
             )
 
     # Invite tracking
-    @commands.bot_has_permissions(manage_guild=True)
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member) -> None:
         """On member listener for new users"""
         logs_channel = await self.config.guild(member.guild).channel()
         logs = self.bot.get_channel(logs_channel)
-        if not logs:
-            return
-        embed = discord.Embed(
-            title="Just joined the server",
-            color=0x03D692,
-        )
-        embed.set_author(name=str(member), icon_url=member.avatar_url)
-        embed.set_footer(text=f"ID: {member.id}")
-        try:
-            invs_before = self.invites[member.guild.id]
-            invs_after = await member.guild.invites()
-            self.invites[member.guild.id] = invs_after
-            for invite in invs_before:
-                if invite.uses < self.find_invite_by_code(invs_after, invite.code).uses:
-                    embed.add_field(
-                        name="Used invite",
-                        value=f"Inviter: {invite.inviter.mention} (`{invite.inviter}` | `{int(invite.inviter.id)}`)\nCode: `{invite.code}`\nUses: `{int(invite.uses)}`",
-                        inline=False,
-                    )
-        except Exception as e:
-            print(str(e))
-        if (await self.config.guild(member.guild).enabled()):
-            await logs.send(embed=embed)
-        else:
+        invs_before = self.invites[member.guild.id]
+        invs_after = await member.guild.invites()
+        self.invites[member.guild.id] = invs_after
+        if await self.config.guild(member.guild).enabled():
             embed = discord.Embed(
                 title="Just joined the server",
                 color=0x03D692,
             )
             embed.set_author(name=str(member), icon_url=member.avatar_url)
             embed.set_footer(text=f"ID: {member.id}")
-            embed.add_field(
-                name="Couldn't find invite!",
-                value=f"I couldn't find the invite that this user used. ",
-                inline=False,
-            )
+            for invite in invs_before:
+                if invite.uses < self.find_invite_by_code(invs_after, invite.code).uses:
+                    embed.add_field(
+                        name="Used invite",
+                        value=f"Inviter: {invite.inviter.mention} (`{invite.inviter}` | `{str(invite.inviter.id)}`)\nCode: `{invite.code}`\nUses: `{str(invite.uses)}`",
+                        inline=False,
+                    )
+                else:
+                    embed = discord.Embed(
+                        title="Just joined the server",
+                        color=0x03D692,
+                    )
+                    embed.set_author(name=str(member), icon_url=member.avatar_url)
+                    embed.set_footer(text=f"ID: {member.id}")
+                    embed.clear_fields()
+                    embed.add_field(
+                        name="Couldn't find invite!",
+                        value=f"I couldn't find the invite that this user used. ",
+                        inline=False,
+                    )
             await logs.send(embed=embed)
