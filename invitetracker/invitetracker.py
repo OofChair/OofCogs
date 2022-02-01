@@ -133,9 +133,12 @@ class InviteTracker(commands.Cog):
         """On member listener for new users"""
         logs_channel = await self.config.guild(member.guild).channel()
         logs = self.bot.get_channel(logs_channel)
-        invs_before = self.invites[member.guild.id]
-        invs_after = await member.guild.invites()
-        self.invites[member.guild.id] = invs_after
+        try:
+            invs_before = self.invites[member.guild.id]
+            invs_after = await member.guild.invites()
+            self.invites[member.guild.id] = invs_after
+        except discord.HTTPException:
+            pass
         if await self.config.guild(member.guild).enabled():
             embed = discord.Embed(
                 title="Just joined the server",
